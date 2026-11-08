@@ -216,7 +216,7 @@ function card(e){
       <dt>⏰ 時間</dt><dd>${esc(e.time)}</dd>
       <dt>📍 地點</dt><dd>${placeHtml(e.place)}<br><a href="${mapUrl(e.map||e.place)}" target="_blank" rel="noopener">在地圖上打開 ↗</a></dd>
       <dt>💰 費用</dt><dd>${esc(e.cost)}</dd>
-      <dt>👧 適合</dt><dd>${esc(e.kids)}</dd>
+      <dt>👶 年齡</dt><dd>${esc(e.kids)}</dd>
     </dl>
     <ul class="pts">${(e.points||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
     ${e.tip?`<div class="tip">💡 ${esc(e.tip).replace(/\n/g,'<br>')}</div>`:''}
