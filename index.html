@@ -97,6 +97,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .foot a{color:var(--sub)}
 .btn{display:inline-flex;align-items:center;gap:4px;border-radius:999px;background:var(--ink);color:#fff !important;text-decoration:none;padding:5px 14px;font-size:13px}
 .today .card{border:2px solid #e9c99b;background:#fffaf0}
+.tw .emo{background:#efe8f3}.tw .tag.city{background:#9a86b0}
 .empty{text-align:center;color:var(--sub);padding:30px 0}
 
 /* always */
@@ -175,6 +176,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
     <div id="list"></div>
   </section>
 
+  <section class="sec" id="twSec" style="display:none">
+    <h2 class="sec-t h">🗾 全台最推薦 Top 3 <small>想出遠門的參考</small></h2>
+    <div id="twList"></div>
+  </section>
+
   <section class="sec">
     <h2 class="sec-t h">🏠 隨時都能去的放電好地方 <small>沒活動也不怕</small></h2>
     <div class="al" id="always"></div>
@@ -201,8 +207,8 @@ let D=null, city='全部', opts=new Set();
 
 function hasDay(e,day){return (e.days||['sat','sun']).includes(day);}
 function placeHtml(p){p=esc(p);const i=p.indexOf('（');return i>0?p.slice(0,i)+'<br><span class="addr">'+p.slice(i+1).replace(/）$/,'')+'</span>':p;}
-function card(e){
-  const c=cls[e.city]||'kh';
+function card(e,tw){
+  const c=tw?'tw':(cls[e.city]||'kh');
   const tags=[`<span class="tag city">${esc(e.city)}</span>`];
   if(e.hot) tags.push(`<span class="tag hot">${esc(e.hot)}</span>`);
   if(e.free) tags.push('<span class="tag free">免費</span>');
@@ -256,6 +262,10 @@ function init(d){
     document.getElementById('todayLabel').textContent=td.label||'今天還能去';
     document.getElementById('todayNote').textContent=td.note||'';
     document.getElementById('todayList').innerHTML=td.items.map(card).join('');
+  }
+  if((d.national||[]).length){
+    document.getElementById('twSec').style.display='';
+    document.getElementById('twList').innerHTML=d.national.map(e=>card(e,true)).join('');
   }
   render();
 }

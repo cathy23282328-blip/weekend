@@ -473,5 +473,90 @@
     "srcName": "WeKenGo"
    }
   ]
- }
+ },
+ "national": [
+  {
+   "id": "n-xmas",
+   "city": "新北",
+   "emoji": "🎄",
+   "title": "新北歡樂耶誕城",
+   "hot": "開城首週末",
+   "date": "11/13 – 12/27",
+   "time": "亮燈 17:30–23:00；市集 11:00–22:00",
+   "place": "板橋車站周邊（市民廣場、萬坪公園）",
+   "map": "新北市民廣場",
+   "cost": "免費",
+   "free": true,
+   "night": true,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "全年齡",
+   "points": [
+    "今年主題是卡娜赫拉的小動物",
+    "11/14、15 有童趣嘉年華",
+    "魔術、馬戲、兒童劇輪番上場",
+    "部分遊樂設施免費玩"
+   ],
+   "tip": "搭高鐵到板橋站\n出站就是燈區",
+   "src": "https://news.ltn.com.tw/news/NewTaipei/breakingnews/5631101",
+   "srcName": "自由時報"
+  },
+  {
+   "id": "n-science",
+   "city": "全台",
+   "emoji": "🔬",
+   "title": "臺灣科學節最後週末",
+   "hot": "11/15 結束",
+   "date": "11/7 – 11/15",
+   "time": "依各館公告",
+   "place": "五大科學館（基隆、台北、台中、高雄、屏東）",
+   "map": "國立臺灣科學教育館",
+   "cost": "部分免費，部分需購票",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "4 歲以上",
+   "points": [
+    "全台超過千場科學活動",
+    "實驗、劇場、解謎、科普市集",
+    "離哪一館近就去哪一館"
+   ],
+   "tip": "部分活動要先報名\n出發前先看各館官網",
+   "src": "https://supertaste.tvbs.com.tw/pack/361752",
+   "srcName": "食尚玩家"
+  },
+  {
+   "id": "n-butt",
+   "city": "北部",
+   "emoji": "🕵️",
+   "title": "屁屁偵探親子劇場",
+   "date": "11/7 – 11/15",
+   "time": "依售票場次",
+   "place": "新北、桃園、基隆巡演",
+   "map": "新北藝文中心",
+   "cost": "需購票",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "3 歲以上",
+   "points": [
+    "人氣繪本「屁屁偵探」舞台劇",
+    "新故事：南方島嶼的神秘遺跡"
+   ],
+   "tip": "人氣場次很快完售\n要先上售票網買票",
+   "src": "https://www.parenting.com.tw/article/6002726",
+   "srcName": "親子天下"
+  }
+ ]
 }
