@@ -147,33 +147,6 @@
    ]
   },
   {
-   "id": "tn-nmtl",
-   "city": "台南",
-   "emoji": "📚",
-   "title": "兒童文學特展「玩家登入」",
-   "date": "即日起 – 11/15（日）",
-   "time": "依館方開放時間",
-   "place": "國立臺灣文學館（台南市中西區中正路1號）",
-   "map": "國立臺灣文學館",
-   "cost": "免費",
-   "free": true,
-   "night": false,
-   "signup": false,
-   "kids": "6 歲以上，愛看書的孩子",
-   "points": [
-    "用「遊戲」的方式逛兒童文學",
-    "11/15 就結束了"
-   ],
-   "tip": "可以跟孔廟、林百貨\n排成市區一日遊",
-   "src": "https://www.tainanoutlook.com/weekend-map",
-   "srcName": "台南週末活動地圖",
-   "days": [
-    "sat",
-    "sun"
-   ],
-   "hot": "最後一週"
-  },
-  {
    "id": "tn-sinica",
    "city": "台南",
    "emoji": "🔬",
@@ -557,6 +530,205 @@
    "tip": "人氣場次很快完售\n要先上售票網買票",
    "src": "https://www.parenting.com.tw/article/6002726",
    "srcName": "親子天下"
+  }
+ ],
+ "exhibits": [
+  {
+   "id": "x-tiger",
+   "city": "高雄",
+   "emoji": "🐯",
+   "title": "虎姑婆的勇氣島大冒險",
+   "date": "9/17 – 12/20",
+   "start": "2026-09-17",
+   "end": "2026-12-20",
+   "time": "依售票頁公告",
+   "place": "駁二藝術特區 B10",
+   "map": "駁二藝術特區",
+   "cost": "需購票",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "3 歲以上",
+   "points": [
+    "台灣經典童話「虎姑婆」主題展",
+    "邊玩邊闖關的冒險場景"
+   ],
+   "tip": "可以順便逛駁二\n看鋼雕藝術節",
+   "src": "https://gofunit.com/%e9%ab%98%e9%9b%84%e5%b1%95%e8%a6%bd/",
+   "srcName": "GoFunIt 高雄展覽整理"
+  },
+  {
+   "id": "x-conan",
+   "city": "高雄",
+   "emoji": "🔍",
+   "title": "名偵探柯南30週年紀念展",
+   "date": "11/1 – 12/19",
+   "start": "2026-11-01",
+   "end": "2026-12-19",
+   "time": "依官網公告",
+   "place": "夢時代購物中心（前鎮區）",
+   "map": "夢時代購物中心",
+   "cost": "依官網公告",
+   "free": false,
+   "night": true,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "6 歲以上",
+   "points": [
+    "TV動畫30週年紀念展",
+    "在百貨裡，下雨天也能逛"
+   ],
+   "tip": "票價和時間請先看官網\n逛完可以搭摩天輪",
+   "src": "https://gofunit.com/%e9%ab%98%e9%9b%84%e5%b1%95%e8%a6%bd/",
+   "srcName": "GoFunIt 高雄展覽整理"
+  },
+  {
+   "id": "x-kmfa",
+   "city": "高雄",
+   "emoji": "🖼️",
+   "title": "麥可.克雷格-馬丁特展",
+   "date": "10/3 – 2027/3/7",
+   "start": "2026-10-03",
+   "end": "2027-03-07",
+   "time": "09:30–17:30，週一休館",
+   "place": "高雄市立美術館 101–103 展覽室",
+   "map": "高雄市立美術館",
+   "cost": "全票380、優惠票250",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "5 歲以上，色彩鮮豔好入門",
+   "points": [
+    "英國觀念藝術大師回顧展",
+    "日常物品畫成大色塊作品"
+   ],
+   "tip": "旁邊就是兒童美術館\n和內惟埤草地",
+   "src": "https://www.marieclaire.com.tw/lifestyle/art/96303",
+   "srcName": "美麗佳人"
+  },
+  {
+   "id": "x-pop",
+   "city": "高雄",
+   "emoji": "🎤",
+   "title": "POP!流行音樂互動展",
+   "date": "常設展",
+   "start": "2026-11-09",
+   "end": "2099-12-31",
+   "time": "依官網公告",
+   "place": "高雄流行音樂中心",
+   "map": "高雄流行音樂中心",
+   "cost": "依官網公告",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "4 歲以上，可以唱可以玩",
+   "points": [
+    "流行音樂主題互動展",
+    "展館外就是海邊步道"
+   ],
+   "tip": "票價請先看官網\n傍晚可以順便看海",
+   "src": "https://gofunit.com/%e9%ab%98%e9%9b%84%e5%b1%95%e8%a6%bd/",
+   "srcName": "GoFunIt 高雄展覽整理"
+  },
+  {
+   "id": "x-pharaoh",
+   "city": "台南",
+   "emoji": "🏺",
+   "title": "埃及之王：法老",
+   "date": "1/29 – 2027/1/10",
+   "start": "2026-01-29",
+   "end": "2027-01-10",
+   "time": "09:30–17:30，週三休館",
+   "place": "奇美博物館 1 樓特展廳（台南仁德）",
+   "map": "奇美博物館",
+   "cost": "全票580、優惠票480，未滿7歲免費",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "5 歲以上，愛木乃伊的孩子",
+   "points": [
+    "大英博物館 280 件埃及文物",
+    "28 噸巨型石雕來台",
+    "台灣史上最大的古埃及展"
+   ],
+   "tip": "未滿 7 歲免費\n博物館外的草地很好拍照",
+   "src": "https://www.nownews.com/news/6780293",
+   "srcName": "NOWnews"
+  },
+  {
+   "id": "tn-nmtl",
+   "city": "台南",
+   "emoji": "📚",
+   "title": "兒童文學特展「玩家登入」",
+   "date": "即日起 – 11/15（日）",
+   "time": "依館方開放時間，週一休館",
+   "place": "國立臺灣文學館（台南市中西區中正路1號）",
+   "map": "國立臺灣文學館",
+   "cost": "免費",
+   "free": true,
+   "night": false,
+   "signup": false,
+   "kids": "6 歲以上，愛看書的孩子",
+   "points": [
+    "用「遊戲」的方式逛兒童文學",
+    "11/15 就結束了"
+   ],
+   "tip": "可以跟孔廟、林百貨\n排成市區一日遊",
+   "src": "https://www.tainanoutlook.com/weekend-map",
+   "srcName": "台南週末活動地圖",
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "start": "2026-11-09",
+   "end": "2026-11-15"
+  },
+  {
+   "id": "x-ptmoa",
+   "city": "屏東",
+   "emoji": "🎨",
+   "title": "陳國展版畫特展",
+   "date": "9/24 – 12/20",
+   "start": "2026-09-24",
+   "end": "2026-12-20",
+   "time": "依館方開放時間",
+   "place": "屏東縣立美術館",
+   "map": "屏東縣立美術館",
+   "cost": "100 元",
+   "free": false,
+   "night": false,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "6 歲以上",
+   "points": [
+    "「版同造化」版畫特展",
+    "可以跟屏東聖誕節排同一天"
+   ],
+   "tip": "白天看展\n傍晚走去屏東公園看燈",
+   "src": "https://gofunit.com/%e9%ab%98%e9%9b%84%e5%b1%95%e8%a6%bd/",
+   "srcName": "GoFunIt 展覽整理"
   }
  ]
 }

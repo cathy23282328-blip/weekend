@@ -108,6 +108,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .foot a{color:var(--sub)}
 .btn{display:inline-flex;align-items:center;gap:4px;border-radius:999px;background:var(--ink);color:#fff !important;text-decoration:none;padding:5px 14px;font-size:13px}
 .today .card{border:2px solid #e9c99b;background:#fffaf0}
+.ex .emo{background:#f3ece1}.tag.left{background:#fdeee8;color:#b2533b}
 .tw .emo{background:#efe8f3}.tw .tag.city{background:#9a86b0}
 .empty{text-align:center;color:var(--sub);padding:30px 0}
 
@@ -187,6 +188,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
     <div id="list"></div>
   </section>
 
+  <section class="sec" id="exSec" style="display:none">
+    <h2 class="sec-t h">🖼️ 南部展覽 <small>展期比較長，有空慢慢去</small></h2>
+    <div id="exList"></div>
+  </section>
+
   <section class="sec" id="twSec" style="display:none">
     <h2 class="sec-t h">🗾 全台最推薦 Top 3 <small>想出遠門的參考</small></h2>
     <div id="twList"></div>
@@ -218,9 +224,10 @@ let D=null, city='全部', opts=new Set();
 
 function hasDay(e,day){return (e.days||['sat','sun']).includes(day);}
 function placeHtml(p){p=esc(p);const i=p.indexOf('（');return i>0?p.slice(0,i)+'<br><span class="addr">'+p.slice(i+1).replace(/）$/,'')+'</span>':p;}
-function card(e,tw){
-  const c=tw?'tw':(cls[e.city]||'kh');
+function card(e,tw,ex){
+  const c=tw?'tw':(cls[e.city]||'kh')+(ex?' ex':'');
   const tags=[`<span class="tag city">${esc(e.city)}</span>`];
+  if(ex&&e.end){const n=Math.ceil((new Date(e.end+'T23:59:59+08:00')-Date.now())/864e5); if(e.end>='2099') tags.push('<span class="tag">常設展</span>'); else if(n<=21) tags.push(`<span class="tag left">剩 ${n} 天</span>`);}
   if(e.hot) tags.push(`<span class="tag hot">${esc(e.hot)}</span>`);
   if(e.free) tags.push('<span class="tag free">免費</span>');
   if(e.signup) tags.push('<span class="tag signup">要先報名/登記</span>');
@@ -250,6 +257,10 @@ function render(){
   L.sort((a,b)=>(order[a.city]-order[b.city]));
   document.getElementById('list').innerHTML=L.length?L.map(card).join(''):'<div class="empty">這個條件下沒有活動，換個篩選看看 🌱</div>';
   document.getElementById('count').textContent=`共 ${L.length} 個活動`;
+  const today=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
+  const X=(D.exhibits||[]).filter(e=>(!e.end||e.end>=today)&&(city==='全部'||e.city===city)).sort((a,b)=>(a.end||'').localeCompare(b.end||''));
+  document.getElementById('exSec').style.display=(D.exhibits||[]).length?'':'none';
+  document.getElementById('exList').innerHTML=X.length?X.map(e=>card(e,false,true)).join(''):'<div class="empty">這個縣市目前沒有收錄展覽 🌱</div>';
 }
 function init(d){
   D=d;
