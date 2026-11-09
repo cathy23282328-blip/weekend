@@ -67,6 +67,19 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .hero .deco{position:absolute;right:12px;top:30px;width:78px;opacity:.95}
 @media(max-width:480px){.hero h1{font-size:25px}.hero .kicker{padding-right:70px}.hero .deco{width:64px;top:34px}}
 
+.more{background:var(--paper);border:1.5px dashed #d8c3a8;border-radius:20px;padding:4px 16px;margin:4px 0 6px}
+.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-family:"Huninn","Noto Sans TC",sans-serif;font-size:15.5px}
+.more summary::-webkit-details-marker{display:none}
+.more summary em{font-style:normal;font-size:13px;color:#c98b55}
+.more[open] summary em{visibility:hidden}
+.more-hint{margin:0 0 6px;font-size:12.5px;color:var(--sub)}
+.more ul{list-style:none;margin:0;padding:0 0 8px}
+.more li{border-top:1px dashed var(--line);padding:10px 0}
+.more li a{color:var(--ink);text-decoration:none;display:block}
+.more .mt{font-weight:700;font-size:14.5px}
+.more .mt .ct{display:inline-block;font-size:11.5px;color:#fff;border-radius:999px;padding:0 8px;margin-right:6px;vertical-align:2px}
+.more .mm{font-size:12.5px;color:var(--sub);margin-top:2px}
+.more .go{color:#c98b55;font-size:12.5px;white-space:nowrap}
 .qnav{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-top:14px}
 .qn{display:flex;flex-direction:column;align-items:center;gap:4px;background:var(--paper);border:1.5px solid var(--line);border-radius:18px;padding:10px 4px 8px;
  text-decoration:none;color:var(--ink);cursor:pointer;font-family:"Huninn","Noto Sans TC",sans-serif;font-size:13.5px;white-space:nowrap;transition:transform .12s}
@@ -242,6 +255,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 
   <section class="sec" style="margin-top:8px">
     <div id="list"></div>
+    <details class="more" id="moreBox" style="display:none">
+      <summary><span id="moreSum"></span><em>點開看 ▾</em></summary>
+      <p class="more-hint">資訊比較少或比較小型的活動，有興趣的話點連結看詳細</p>
+      <ul id="moreList"></ul>
+    </details>
   </section>
   </div>
 
@@ -319,6 +337,11 @@ function render(){
   L.sort((a,b)=>(order[a.city]-order[b.city]));
   document.getElementById('list').innerHTML=L.length?L.map(card).join(''):'<div class="empty">這個條件下沒有活動，換個篩選看看 🌱</div>';
   document.getElementById('count').textContent=`共 ${L.length} 個活動`;
+  const CC={'高雄':'#e9967a','台南':'#d9a441','屏東':'#7fae8f'};
+  const M=(D.more||[]).filter(m=>city==='全部'||m.city===city);
+  document.getElementById('moreBox').style.display=M.length?'':'none';
+  document.getElementById('moreSum').textContent=`📋 還有 ${M.length} 個活動`;
+  document.getElementById('moreList').innerHTML=M.map(m=>`<li><a href="${esc(m.url)}" target="_blank" rel="noopener"><div class="mt"><span class="ct" style="background:${CC[m.city]||'#9a86b0'}">${esc(m.city)}</span>${esc(m.title)}</div><div class="mm">${esc(m.date)}・${esc(m.place)}${m.note?`・${esc(m.note)}`:''}　<span class="go">看詳細 ↗</span></div></a></li>`).join('');
   const today=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
   const X=(D.exhibits||[]).filter(e=>(!e.end||e.end>=today)&&(city==='全部'||e.city===city)).sort((a,b)=>(a.end||'').localeCompare(b.end||''));
   const P=(D.presale||[]).filter(p=>(!p.saleEnd||p.saleEnd>=today)&&(city==='全部'||p.city===city));
@@ -373,7 +396,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611090843';
+const BUILD='202611090850';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');

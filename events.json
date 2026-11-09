@@ -937,5 +937,95 @@
    "srcName": "遠見城市學",
    "note": "早鳥套票已售完，現在是預售價"
   }
+ ],
+ "more": [
+  {
+   "city": "高雄",
+   "title": "鋼雕藝術節",
+   "date": "即日起 – 11/22",
+   "place": "駁二藝術特區",
+   "url": "https://kcginfo.kcg.gov.tw/Upload/epublication/7-8-01.pdf",
+   "note": "兩年一次，戶外免費看"
+  },
+  {
+   "city": "高雄",
+   "title": "徐生明國際少棒錦標賽",
+   "date": "11/14 – 11/17",
+   "place": "美濃國中棒球場",
+   "url": "https://kcginfo.kcg.gov.tw/Upload/epublication/7-8-01.pdf",
+   "note": "日韓台小球員比賽"
+  },
+  {
+   "city": "台南",
+   "title": "歷史的時空列車",
+   "date": "即日起 – 11/22",
+   "place": "台南文創園區",
+   "url": "https://decing.tw/tainan-2026110708/",
+   "note": ""
+  },
+  {
+   "city": "台南",
+   "title": "中研院南部院區開放日",
+   "date": "11/14（六）",
+   "place": "歸仁沙崙",
+   "url": "https://pinje1225.pixnet.net/blog/posts/8230022556",
+   "note": "日期請先看官網確認"
+  },
+  {
+   "city": "屏東",
+   "title": "墾丁騎遇・玩色漫遊",
+   "date": "即日起 – 11/15",
+   "place": "貓鼻頭公園",
+   "url": "https://wekengo.tw/event/QHsIA4/2026-ken-ding-qi-yu-wan-se-man-you-dai-ni-jie-suo-guo-jing-z",
+   "note": "最後一週"
+  },
+  {
+   "city": "屏東",
+   "title": "海生館萬聖節變裝入館",
+   "date": "即日起 – 11/30",
+   "place": "國立海洋生物博物館",
+   "url": "https://wekengo.tw/event/V0kUXm/wan-sheng-jie-bian-zhuang-ru-guan",
+   "note": "優惠以官網為準"
+  },
+  {
+   "city": "屏東",
+   "title": "搞什麼文物，你知道嗎！？特展",
+   "date": "11/3 – 12/6",
+   "place": "臺灣原住民族文化園區",
+   "url": "https://wekengo.tw/event/5Xg7QZ/da-po-ku-fang-shen-mi-gan-11-yue-te-zhan-gao-shen-me-wen-wu",
+   "note": ""
+  },
+  {
+   "city": "屏東",
+   "title": "屏東鐵道文化觀光祭",
+   "date": "即日起 – 12/5",
+   "place": "枋寮、麟洛火車站一帶",
+   "url": "https://wekengo.tw/event/u9IC2Y/2026-ping-dong-tie-dao-wen-hua-guan-guang-ji-1024125-gen-zhu",
+   "note": ""
+  },
+  {
+   "city": "屏東",
+   "title": "2026 南國漫讀節",
+   "date": "即日起 – 12/6",
+   "place": "屏東各地",
+   "url": "https://wekengo.tw/event/gqStHJ/2026-nan-guo-man-du-jie",
+   "note": ""
+  },
+  {
+   "city": "屏東",
+   "title": "Light One Bike",
+   "date": "即日起 – 12/7",
+   "place": "東港大鵬灣一帶",
+   "url": "https://wekengo.tw/event/XqDTbb/2026lightonebike-huo-dong",
+   "note": ""
+  },
+  {
+   "city": "屏東",
+   "title": "木器浮雕工作坊",
+   "date": "即日起 – 12/6",
+   "place": "佳冬邱姓河南堂",
+   "url": "https://wekengo.tw/event/b7CdZn/2026-qiu-xing-he-nan-tang-zhong-shi-di-sheng-huo-mu-qi-fu-di",
+   "note": "手作，需報名"
+  }
  ]
 }
