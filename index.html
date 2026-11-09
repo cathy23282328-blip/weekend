@@ -317,7 +317,7 @@ function card(e,tw,ex){
       <div><div class="tags">${tags.join('')}</div><h3>${esc(e.title)}</h3></div></div>
     <dl class="info">
       <dt>📅 日期</dt><dd>${esc(e.date)}</dd>
-      <dt>⏰ 時間</dt><dd>${esc(e.time)}</dd>
+      <dt>⏰ 時間</dt><dd>${esc(e.time).replace(/\n/g,'<br>')}</dd>
       <dt>📍 地點</dt><dd>${placeHtml(e.place)}<br><a href="${mapUrl(e.map||e.place)}" target="_blank" rel="noopener">在地圖上打開 ↗</a></dd>
       <dt>💰 費用</dt><dd>${esc(e.cost)}</dd>
       <dt>👶 年齡</dt><dd>${esc(e.kids)}</dd>
@@ -396,7 +396,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611090850';
+const BUILD='202611090935';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
