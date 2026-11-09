@@ -161,7 +161,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
     <div class="updrow"><span class="upd" id="upd"></span>
       <button class="reload" id="reloadBtn" aria-label="重新整理">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M19.8 3.8v4.6h-4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.2" fill="#e9967a"/></svg>
-        <span>看看有沒有新的</span>
+        <span>重新整理</span>
       </button></div>
     <div class="note">
       <svg class="bean" viewBox="0 0 40 40" aria-hidden="true">
@@ -316,7 +316,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611090823';
+const BUILD='202611090826';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
