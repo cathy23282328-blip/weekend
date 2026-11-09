@@ -895,5 +895,47 @@
     "sun"
    ]
   }
+ ],
+ "presale": [
+  {
+   "id": "p-pixar",
+   "city": "高雄",
+   "emoji": "🧸",
+   "title": "皮克斯世界巡迴展",
+   "period": "2026/12/18 – 2027/4/18",
+   "place": "高雄展覽館旁（輕軌 C8）",
+   "map": "高雄展覽館",
+   "kind": "預售票",
+   "saleText": "預售票賣到 12/17",
+   "saleEnd": "2026-12-17",
+   "prices": [
+    {
+     "label": "預售單人",
+     "price": "850"
+    },
+    {
+     "label": "預售雙人",
+     "price": "1,650"
+    },
+    {
+     "label": "開展後全票",
+     "price": "890 起"
+    }
+   ],
+   "points": [
+    "1:1 還原 13 個皮克斯電影場景",
+    "玩具總動員、怪獸電力公司、腦筋急轉彎"
+   ],
+   "kids": "全年齡，未滿 2 歲免費",
+   "buy": [
+    {
+     "name": "Klook",
+     "url": "https://www.klook.com/zh-TW/search/result/?query=%E7%9A%AE%E5%85%8B%E6%96%AF%E4%B8%96%E7%95%8C%E5%B7%A1%E8%BF%B4%E5%B1%95"
+    }
+   ],
+   "src": "https://city.gvm.com.tw/article/132889",
+   "srcName": "遠見城市學",
+   "note": "早鳥套票已售完，現在是預售價"
+  }
  ]
 }

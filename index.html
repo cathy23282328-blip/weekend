@@ -121,6 +121,22 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .foot a{color:var(--sub)}
 .btn{display:inline-flex;align-items:center;gap:4px;border-radius:999px;background:var(--ink);color:#fff !important;text-decoration:none;padding:5px 14px;font-size:13px}
 .today .card{border:2px solid #e9c99b;background:#fffaf0}
+.pre{background:linear-gradient(135deg,#fff6e9,#fdeee4);border:1.5px solid #f1d6bd;border-radius:24px;padding:14px 14px 4px;margin-bottom:16px}
+.pre-t{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:2px 4px 10px}
+.pre-t .h{font-size:18px}.pre-t small{font-size:12.5px;color:var(--sub)}
+.pc{background:var(--paper);border-radius:18px;padding:14px;margin-bottom:10px;border:1.5px solid #f3e2d0}
+.pc .row1{display:flex;gap:10px;align-items:center}
+.pc .e{font-size:26px;width:44px;height:44px;border-radius:14px;background:#fcebe3;display:grid;place-items:center;flex:0 0 44px}
+.pc h4{margin:0;font-size:16.5px;line-height:1.35}
+.pc .meta{font-size:13px;color:var(--sub);margin-top:2px}
+.prices{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px}
+.price{background:#fbf5ea;border-radius:12px;padding:5px 10px;font-size:12.5px;color:var(--sub)}
+.price b{display:block;font-size:16px;color:#b5534a}
+.sale{font-size:13.5px;margin:6px 0}
+.sale .left{color:#fff;background:#e9967a;border-radius:999px;padding:1px 9px;font-size:12px;white-space:nowrap;margin-left:4px}
+.buys{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.buybtn{display:inline-flex;align-items:center;gap:4px;background:#c98b55;color:#fff !important;text-decoration:none;border-radius:999px;padding:7px 14px;font-size:13.5px;box-shadow:0 2px 0 #a86e3f}
+.pc .src{font-size:12px;color:var(--sub);margin-top:8px}.pc .src a{color:var(--sub)}
 .ex .emo{background:#f3ece1}.tag.left{background:#fdeee8;color:#b2533b}
 .tw .emo{background:#efe8f3}.tw .tag.city{background:#9a86b0}
 .empty{text-align:center;color:var(--sub);padding:30px 0}
@@ -207,6 +223,10 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 
   <section class="sec" id="exSec" style="display:none">
     <h2 class="sec-t h">🖼️ 南部展覽 <small>展期比較長，有空慢慢去</small></h2>
+    <div class="pre" id="preBox" style="display:none">
+      <div class="pre-t"><span class="h">🎟️ 早鳥・預售票開賣中</span><small>還沒開展，現在買比較便宜</small></div>
+      <div id="preList"></div>
+    </div>
     <div id="exList"></div>
   </section>
 
@@ -276,7 +296,18 @@ function render(){
   document.getElementById('count').textContent=`共 ${L.length} 個活動`;
   const today=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
   const X=(D.exhibits||[]).filter(e=>(!e.end||e.end>=today)&&(city==='全部'||e.city===city)).sort((a,b)=>(a.end||'').localeCompare(b.end||''));
-  document.getElementById('exSec').style.display=(D.exhibits||[]).length?'':'none';
+  const P=(D.presale||[]).filter(p=>(!p.saleEnd||p.saleEnd>=today)&&(city==='全部'||p.city===city));
+  document.getElementById('preBox').style.display=P.length?'':'none';
+  document.getElementById('preList').innerHTML=P.map(p=>{const n=p.saleEnd?Math.ceil((new Date(p.saleEnd+'T23:59:59+08:00')-Date.now())/864e5):null;
+    return `<div class="pc"><div class="row1"><div class="e">${esc(p.emoji)}</div><div><h4>${esc(p.title)}</h4><div class="meta">${esc(p.city)}・展期 ${esc(p.period)}</div></div></div>
+    <div class="prices">${(p.prices||[]).map(x=>`<div class="price">${esc(x.label)}<b>$${esc(x.price)}</b></div>`).join('')}</div>
+    <div class="sale">⏳ ${esc(p.saleText)}${n!==null?` <span class="left">剩 ${n} 天</span>`:''}</div>${p.note?`<div class="sale" style="color:var(--sub)">💡 ${esc(p.note)}</div>`:''}
+    <div class="sale">📍 ${esc(p.place)}<br><a href="${mapUrl(p.map||p.place)}" target="_blank" rel="noopener" style="color:var(--tea-d);margin-left:1.6em">在地圖上打開 ↗</a></div>
+    ${p.kids?`<div class="sale">👶 ${esc(p.kids)}</div>`:''}
+    <ul class="pts">${(p.points||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+    <div class="buys">${(p.buy||[]).map(b=>`<a class="buybtn" href="${esc(b.url)}" target="_blank" rel="noopener">🎫 ${esc(b.name)} 買票 ↗</a>`).join('')}</div>
+    <div class="src">資料來源：<a href="${esc(p.src)}" target="_blank" rel="noopener">${esc(p.srcName)}</a></div></div>`}).join('');
+  document.getElementById('exSec').style.display=((D.exhibits||[]).length||(D.presale||[]).length)?'':'none';
   document.getElementById('exList').innerHTML=X.length?X.map(e=>card(e,false,true)).join(''):'<div class="empty">這個縣市目前沒有收錄展覽 🌱</div>';
 }
 function init(d){
@@ -316,7 +347,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611090826';
+const BUILD='202611090837';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
