@@ -48,7 +48,19 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .hero .kicker{margin-top:14px;font-size:13px;color:var(--sub);letter-spacing:.12em}
 .hero h1{margin:4px 0 6px;font-size:30px;line-height:1.3}
 .hero .week{display:inline-block;background:var(--tea);color:#fff;border-radius:999px;padding:3px 14px;font-size:15px}
-.reload{margin-left:10px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:12.5px;font-family:inherit;cursor:pointer}
+.updrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.updrow .upd{margin:0}
+.reload{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:6px 14px 6px 8px;
+ background:linear-gradient(135deg,#fbe9dc,#f6dcc6);color:#8a5a3c;font-family:"Huninn","Noto Sans TC",sans-serif;font-size:13.5px;cursor:pointer;
+ box-shadow:0 2px 0 #e7c7aa,inset 0 0 0 1.5px #f1d2b8;transition:transform .15s}
+.reload:active{transform:translateY(2px);box-shadow:0 0 0 #e7c7aa,inset 0 0 0 1.5px #f1d2b8}
+.reload svg{width:22px;height:22px;background:#fffdf8;border-radius:50%;padding:3px;color:#c98b55}
+.reload.spin svg{animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);opacity:0;background:#4a3b30;color:#fff;
+ padding:9px 18px;border-radius:999px;font-size:14px;transition:.3s;pointer-events:none;z-index:20;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.reload-old{margin-left:10px;border:1.5px solid var(--line);background:var(--cream);color:var(--ink);border-radius:999px;padding:3px 12px;font-size:12.5px;font-family:inherit;cursor:pointer}
 .hero .upd{font-size:12px;color:var(--sub);margin-top:8px}
 .hero .note{margin-top:14px;background:var(--cream);border-radius:16px;padding:12px 14px;font-size:14.5px;display:flex;gap:10px}
 .hero .note .bean{flex:0 0 38px}
@@ -146,7 +158,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
     <div class="kicker">高雄・台南・屏東　親子週末情報</div>
     <h1 class="h">紅豆家・週末去哪玩</h1>
     <span class="week h" id="week">—</span>
-    <div class="upd"><span id="upd"></span><button class="reload" id="reloadBtn">🔄 重新整理</button></div>
+    <div class="updrow"><span class="upd" id="upd"></span>
+      <button class="reload" id="reloadBtn" aria-label="重新整理">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 1 1-2.2-5.3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M19.8 3.8v4.6h-4.6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.2" fill="#e9967a"/></svg>
+        <span>看看有沒有新的</span>
+      </button></div>
     <div class="note">
       <svg class="bean" viewBox="0 0 40 40" aria-hidden="true">
         <ellipse cx="20" cy="21" rx="15" ry="13" fill="#b5534a"/>
@@ -293,16 +309,29 @@ function init(d){
   render();
 }
 function syncChips(){
-  document.getElementById('reloadBtn').onclick=()=>{location.replace(location.pathname+'?r='+Date.now()+(location.hash||''));};
 document.querySelectorAll('#cityChips .chip').forEach(x=>x.classList.toggle('on',x.dataset.c===city));
   document.querySelectorAll('#optChips .chip').forEach(x=>x.classList.toggle('on',opts.has(x.dataset.o)));
 }
 document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.dataset.c;syncChips();render();});
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
+const LOADED=Date.now();
+async function checkNew(manual){
+  const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
+  try{
+    const j=await (await fetch('events.json?v='+Date.now(),{cache:'no-store'})).json();
+    const changed=!D||j.updated!==D.updated||JSON.stringify(j).length!==JSON.stringify(D).length;
+    if(manual&&!changed){setTimeout(()=>{b.classList.remove('spin');toast('已經是最新的囉 🌿');},500);return;}
+    if(changed){ if(manual) toast('更新好了 ✨'); setTimeout(()=>location.replace(location.pathname+'?r='+Date.now()),manual?600:0); }
+  }catch(e){ if(manual){b.classList.remove('spin');toast('網路好像不太穩，等一下再試試');} }
+}
+document.getElementById('reloadBtn').onclick=()=>checkNew(true);
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'&&Date.now()-LOADED>30*60e3) checkNew(false); });
 fetch('events.json?v='+Date.now()).then(r=>r.json()).then(init).catch(()=>{
   document.getElementById('list').innerHTML='<div class="empty">資料載入失敗，請重新整理頁面 🙏</div>';
 });
 </script>
+<div class="toast" id="toast"></div>
 </body>
 </html>
