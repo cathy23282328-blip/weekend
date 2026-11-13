@@ -216,11 +216,24 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .fv-go{display:block;text-align:center;font-size:13px;color:var(--tea-d);padding:4px 0 6px}
 .fv-hint{font-size:12px;color:var(--sub);text-align:center;margin:2px 0 8px}
 
+/* hand-drawn icons */
+.ic{width:1.3em;height:1.3em;vertical-align:-.3em;display:inline-block;overflow:visible;flex:none}
+.qn i .ic{width:31px;height:31px;vertical-align:0}
+.emo .ic{width:38px;height:38px;vertical-align:0}
+.pick .e .ic{width:38px;height:38px;vertical-align:0}
+.pc .e .ic{width:32px;height:32px;vertical-align:0}
+.fv .fe .ic{width:30px;height:30px;vertical-align:0}
+.sec-t .ic{width:1.4em;height:1.4em;vertical-align:-.32em}
+.info dt .ic{width:1.3em;height:1.3em}
+.toast .ic{width:1.3em;height:1.3em}
+.chip .ic{width:1.25em;height:1.25em;vertical-align:-.28em}
+
 .end{margin-top:30px;text-align:center;font-size:12.5px;color:var(--sub)}
 .end svg{width:120px;display:block;margin:0 auto 6px}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="1.7"/></filter></svg>
 <div class="wrap">
 
   <header class="hero">
@@ -412,7 +425,7 @@ function alHtml(a){return `<div class="ac ${cls[a.city]||''}">${favBtn('a:'+a.ti
     <div class="t">${esc(a.emoji)} ${esc(a.title)}</div><p>${esc(a.desc)}</p>
     <div class="lk"><a href="${mapUrl(a.map||a.title)}" target="_blank" rel="noopener">地圖 ↗</a><a href="${esc(a.src)}" target="_blank" rel="noopener">介紹 ↗</a></div></div>`;}
 function preHtml(p){const n=p.saleEnd?Math.ceil((new Date(p.saleEnd+'T23:59:59+08:00')-Date.now())/864e5):null;
-    return `<div class="pc">${favBtn('p:'+p.id)}<div class="row1"><div class="e">${esc(p.emoji)}</div><div><h4>${esc(p.title)}</h4><div class="meta">${esc(p.city)}・展期 ${esc(p.period)}</div></div></div>
+    return `<div class="pc">${favBtn('p:'+p.id)}<div class="row1"><div class="e">${esc(p.emoji)}</div><div><h4>${esc(p.title)}</h4><div class="meta">${esc(p.city)}・展期 <span style="white-space:nowrap">${esc(p.period)}</span></div></div></div>
     <div class="prices">${(p.prices||[]).map(x=>`<div class="price">${esc(x.label)}<b>$${esc(x.price)}</b></div>`).join('')}</div>
     <div class="sale">⏳ ${esc(p.saleText)}${n!==null?` <span class="left">剩 ${n} 天</span>`:''}</div>${p.note?`<div class="sale" style="color:var(--sub)">💡 ${esc(p.note)}</div>`:''}
     <div class="sale">📍 ${esc(p.place)}<br><a href="${mapUrl(p.map||p.place)}" target="_blank" rel="noopener" style="color:var(--tea-d);margin-left:1.6em">在地圖上打開 ↗</a></div>
@@ -545,7 +558,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611131200';
+const BUILD='202611131230';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
@@ -566,6 +579,161 @@ document.querySelectorAll('.qn').forEach(a=>a.onclick=e=>{e.preventDefault();con
   const y=el.getBoundingClientRect().top+window.scrollY-12;window.scrollTo({top:y,behavior:'smooth'});});
 const tt=document.getElementById('totop');window.addEventListener('scroll',()=>tt.classList.toggle('on',window.scrollY>900),{passive:true});
 tt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+/* ===== 手繪小圖示：把畫面上的 emoji 自動換成手繪風 SVG ===== */
+const N='stroke="none"', FN='fill="none"';
+const eyes=(y,x1,x2)=>`<circle cx="${x1}" cy="${y}" r="1.8" fill="#5b4434" ${N}/><circle cx="${x2}" cy="${y}" r="1.8" fill="#5b4434" ${N}/>`;
+const blush=(y,x1,x2)=>`<ellipse cx="${x1}" cy="${y}" rx="2.6" ry="1.6" fill="#f4a8a0" ${N} opacity=".8"/><ellipse cx="${x2}" cy="${y}" rx="2.6" ry="1.6" fill="#f4a8a0" ${N} opacity=".8"/>`;
+const IC={
+heart:`<path d="M24 39s-13-8-15.5-16C6.8 17 10 11 16 11c3.7 0 6 2 8 5 2-3 4.3-5 8-5 6 0 9.2 6 7.5 12C37 31 24 39 24 39z" fill="#f4a28c"/><path d="M13.5 19q.8-3.6 4.2-4" stroke="#fff" ${FN}/>`,
+moon:`<path d="M29 7a17 17 0 1 0 12 27A14 14 0 0 1 29 7z" fill="#f6d27a"/><circle cx="17" cy="25" r="1.8" fill="#e8b84f" ${N}/><circle cx="23" cy="33" r="2.4" fill="#e8b84f" ${N}/><path d="M38 9l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="#f6d27a" stroke-width="1.4"/>`,
+star:`<path d="M24 6.5l5.2 10.6 11.6 1.6-8.4 8.2 2 11.6L24 33l-10.4 5.5 2-11.6-8.4-8.2 11.6-1.6z" fill="#f6d27a"/><path d="M17.5 21.5q1-2.5 3.5-3" stroke="#fff" ${FN}/>`,
+calendar:`<rect x="7.5" y="11" width="33" height="29" rx="5" fill="#fffaf0"/><path d="M7.5 16a5 5 0 0 1 5-5h23a5 5 0 0 1 5 5v4.5h-33z" fill="#f0a48a"/><path d="M17 7v7M31 7v7" ${FN}/><g ${N} fill="#d0a77c"><circle cx="16" cy="27" r="1.9"/><circle cx="24" cy="27" r="1.9"/><circle cx="32" cy="27" r="1.9"/><circle cx="16" cy="33.5" r="1.9"/></g><path d="M22 33.5l2 2 4-4" stroke="#e07a5f" ${FN}/>`,
+frame:`<rect x="6.5" y="8.5" width="35" height="31" rx="3" fill="#e6c49a"/><rect x="11.5" y="13.5" width="25" height="21" rx="1.5" fill="#d4ebf2"/><path d="M11.5 34.5l8-9 5 5 4-4 8 8z" fill="#a9cc98"/><circle cx="30" cy="19.5" r="2.6" fill="#f6d27a"/>`,
+ticket:`<path d="M6.5 14.5h35v6.5a3.2 3.2 0 0 0 0 6.4v6.6h-35v-6.6a3.2 3.2 0 0 0 0-6.4z" fill="#f7c4bd"/><path d="M31 15v19" stroke-dasharray="2.2 3.2" ${FN}/><path d="M13 21.5h11M13 27.5h7" ${FN}/><path d="M36 22.5l.8 1.8 1.9.3-1.4 1.3.3 1.9-1.6-.9-1.6.9.3-1.9-1.4-1.3 1.9-.3z" fill="#fff" stroke-width="1"/>`,
+hsr:`<path d="M5.5 33c0-10 8.5-16.5 20.5-16.5h7.5c5.5 0 9 4 9 9.5V33z" fill="#fffaf0"/><path d="M27 20.5h7c3 0 5.2 2 5.8 5.5H27z" fill="#a8d0e2"/><path d="M6.3 28.5h36" stroke="#f0a48a" stroke-width="3.2"/><path d="M5.5 33h37" ${FN}/><circle cx="14" cy="36.5" r="2.6" fill="#fff"/><circle cx="32" cy="36.5" r="2.6" fill="#fff"/><path d="M4 41.5h40" ${FN}/><circle cx="12" cy="23.5" r="1.6" fill="#a8d0e2"/><circle cx="18" cy="21.5" r="1.6" fill="#a8d0e2"/>`,
+slide:`<path d="M10 41V12M18 41V12M10 19h8M10 26h8M10 33h8" ${FN}/><path d="M7.5 13l6.5-6.5 6.5 6.5z" fill="#f0a48a"/><path d="M18 15h3c5.5 0 8 7.5 11.5 15 2 4.2 4 6 8.5 6v4.5c-6.5 0-9.5-3.2-12.5-9.5C25.6 24 24 19.5 21 19.5h-3z" fill="#a9cc98"/><path d="M5 41.5h38" ${FN}/>`,
+money:`<path d="M18 14.5h12l-2.6-6h-6.8z" fill="#e6c49a"/><path d="M17.5 15c-7.5 5-10.5 12.5-8.5 18.5 1.6 5 6.5 7 15 7s13.4-2 15-7c2-6-1-13.5-8.5-18.5z" fill="#f6d27a"/><path d="M24 22v12.5M28 24.8c-1.2-1.6-6.8-2-6.8.9 0 3.2 6.8 1.7 6.8 4.9 0 3-5.6 2.6-7.2.8" ${FN}/>`,
+pin:`<path d="M24 42.5S11.5 30.5 11.5 21a12.5 12.5 0 0 1 25 0c0 9.5-12.5 21.5-12.5 21.5z" fill="#f0a48a"/><circle cx="24" cy="20.5" r="4.6" fill="#fffaf0"/><path d="M15.5 17q1.3-3.5 4.6-4.6" stroke="#fff" ${FN}/>`,
+baby:`<circle cx="24" cy="26" r="14" fill="#fde3cf"/><path d="M21 12.5c0-3.5 5-4 5-.5 0 2-2 2.5-3 1.5" ${FN}/>${eyes(25,18.5,29.5)}${blush(30,15.5,32.5)}<path d="M21 31.5q3 2.6 6 0" ${FN}/>`,
+bulb:`<path d="M24 6.5a12.5 12.5 0 0 0-7.4 22.6c1.6 1.3 2.2 3 2.2 5h10.4c0-2 .6-3.7 2.2-5A12.5 12.5 0 0 0 24 6.5z" fill="#f6d27a"/><path d="M19 37.5h10M20.5 41.5h7M20.5 22l3.5 4.5 3.5-4.5" ${FN}/><path d="M17 17q1.5-4 5-5" stroke="#fff" ${FN}/>`,
+clock:`<circle cx="12" cy="12" r="4.6" fill="#f0a48a"/><circle cx="36" cy="12" r="4.6" fill="#f0a48a"/><circle cx="24" cy="26" r="14.5" fill="#fffaf0"/><path d="M24 26v-8M24 26l5.5 3.2M14 41l3-3.5M34 41l-3-3.5" ${FN}/><circle cx="24" cy="26" r="1.6" fill="#5b4434" ${N}/>`,
+list:`<rect x="10" y="9" width="28" height="33" rx="4" fill="#e6c49a"/><rect x="14" y="13.5" width="20" height="25" rx="2" fill="#fffaf0"/><rect x="18" y="6.5" width="12" height="6" rx="2.5" fill="#c99a6e"/><path d="M18 21h12M18 27h12M18 33h7" ${FN}/>`,
+hourglass:`<path d="M13.5 7.5h21M13.5 40.5h21" ${FN}/><path d="M16 7.5c0 9.5 7.5 11 7.5 16.5S16 31 16 40.5h16c0-9.5-7.5-11-7.5-16.5S32 17 32 7.5z" fill="#fffaf0"/><path d="M18.6 37.6c1-4 5.4-5.6 5.4-8 0 2.4 4.4 4 5.4 8z" fill="#f6d27a" ${N}/><path d="M20 14h8l-4 5z" fill="#f6d27a" ${N}/>`,
+sprout:`<path d="M24 41V24" ${FN}/><path d="M24 27c-2-7.5-9-10.5-15.5-9.5 0 7.5 7.5 11.5 15.5 9.5z" fill="#a9cc98"/><path d="M24 23c2-6.5 8.5-9.5 15-8.5 0 6.5-6.5 10.5-15 8.5z" fill="#c8e2b5"/><path d="M13 41.5h22" ${FN}/>`,
+leaf:`<path d="M9 39C9 20.5 21.5 8.5 40 8.5 40 27 28.5 39 9 39z" fill="#f2a66d"/><path d="M9 39L31 17M19 29v-7M25 23h6" ${FN}/>`,
+herb:`<path d="M12 40C14 26 22 15 38 9" ${FN}/><path d="M18 28c-6-1-9-6-8-11 6 0 9 5 8 11zM24 20c-1-6 2-10 7-11 1 5-2 10-7 11zM22 30c5-3 11-2 14 2-4 4-10 3-14-2z" fill="#a9cc98"/>`,
+sparkle:`<path d="M21 6.5c1.2 8.5 4.3 11.6 12.5 12.8-8.2 1.2-11.3 4.3-12.5 12.8-1.2-8.5-4.3-11.6-12.5-12.8 8.2-1.2 11.3-4.3 12.5-12.8z" fill="#f6d27a"/><path d="M36 28.5c.6 4 2 5.4 5.8 6-3.8.6-5.2 2-5.8 6-.6-4-2-5.4-5.8-6 3.8-.6 5.2-2 5.8-6z" fill="#f7c4bd"/>`,
+sun:`<circle cx="24" cy="24" r="9" fill="#f6d27a"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11.3 11.3l3.5 3.5M33.2 33.2l3.5 3.5M11.3 36.7l3.5-3.5M33.2 14.8l3.5-3.5" ${FN}/>${blush(27,19,29)}`,
+xmas:`<path d="M24 6.5l-8.5 11h4.5l-7.5 10h5.5l-8.5 10.5h29l-8.5-10.5h5.5l-7.5-10h4.5z" fill="#a9cc98"/><rect x="21" y="38" width="6" height="4.5" rx="1" fill="#c99a6e"/><g ${N}><circle cx="21" cy="22" r="2" fill="#f0a48a"/><circle cx="28" cy="29" r="2" fill="#f6d27a"/><circle cx="18" cy="33" r="2" fill="#f6d27a"/><circle cx="31" cy="35" r="2" fill="#f0a48a"/></g>`,
+tree:`<rect x="21" y="27" width="6" height="14.5" rx="1.5" fill="#c99a6e"/><path d="M24 6c-8 0-13 6-12 12-4.5 2.2-4.5 10.5 2 11.5 3 2 7.2 2 10 0 2.8 2 7 2 10 0 6.5-1 6.5-9.3 2-11.5 1-6-4-12-12-12z" fill="#a9cc98"/><path d="M8 41.5h32" ${FN}/>`,
+teddy:`<circle cx="13" cy="13" r="5.8" fill="#d9a77a"/><circle cx="35" cy="13" r="5.8" fill="#d9a77a"/><circle cx="24" cy="25" r="14.5" fill="#d9a77a"/><ellipse cx="24" cy="30.5" rx="6.5" ry="5" fill="#f6e0c4"/>${eyes(23,18.5,29.5)}<ellipse cx="24" cy="28.5" rx="2" ry="1.4" fill="#5b4434" ${N}/><path d="M22 32q2 1.6 4 0" ${FN}/>`,
+boat:`<path d="M24 6.5v26" ${FN}/><path d="M25 8.5l13 20H25z" fill="#fffaf0"/><path d="M23 12L12 28.5h11z" fill="#f0a48a"/><path d="M7.5 32.5h33l-5 7.5H12.5z" fill="#c99a6e"/><path d="M5 43c3-2 5-2 8 0s5 2 8 0 5-2 8 0 5 2 8 0 5-2 6-1" stroke="#7fb7d1" ${FN}/>`,
+squid:`<path d="M24 5.5c-7.5 5-10.5 12-9.5 20.5h19c1-8.5-2-15.5-9.5-20.5z" fill="#f7c4bd"/><path d="M16 26c-1 6-4 8-3 13M21 26c0 6-2 9-1 14M27 26c0 6 2 9 1 14M32 26c1 6 4 8 3 13" ${FN}/>${eyes(19,20,28)}${blush(22.5,18,30)}`,
+flask:`<path d="M18.5 7h11M20 7v11.5L10 37.5c-1 2.2.2 4 3 4h22c2.8 0 4-1.8 3-4L28 18.5V7" fill="#fffaf0"/><path d="M14.6 30h18.8l3.6 7.3c.6 1.4 0 2.4-1.6 2.4H12.6c-1.6 0-2.2-1-1.6-2.4z" fill="#a8d0e2" ${N}/><circle cx="21" cy="34" r="1.8" fill="#fff" ${N}/><circle cx="27" cy="31.5" r="1.3" fill="#fff" ${N}/><circle cx="34" cy="10" r="2" fill="#a8d0e2"/><circle cx="38" cy="5.5" r="1.4" fill="#a8d0e2"/>`,
+music:`<path d="M18.5 34V12.5l18-4.5v22M18.5 17.5l18-4.5" ${FN}/><ellipse cx="14" cy="34.5" rx="5" ry="4" fill="#c8b6e2"/><ellipse cx="32" cy="30.5" rx="5" ry="4" fill="#c8b6e2"/>`,
+mic:`<rect x="17.5" y="6" width="13" height="20.5" rx="6.5" fill="#c8b6e2"/><path d="M17.5 14h5M17.5 19h5" ${FN}/><path d="M12.5 22a11.5 11.5 0 0 0 23 0M24 33.5v7M18 41.5h12" ${FN}/>`,
+otter:`<circle cx="12.5" cy="15" r="3.6" fill="#b98a62"/><circle cx="35.5" cy="15" r="3.6" fill="#b98a62"/><ellipse cx="24" cy="25.5" rx="15" ry="13.5" fill="#b98a62"/><ellipse cx="24" cy="30" rx="8" ry="6.2" fill="#f1dcc3"/>${eyes(23,17.5,30.5)}<ellipse cx="24" cy="27.5" rx="2.2" ry="1.5" fill="#5b4434" ${N}/><path d="M11 29h6M11 32.5l6-1.5M37 29h-6M37 32.5l-6-1.5" stroke-width="1.4" ${FN}/>`,
+telescope:`<path d="M8.5 22.5l23-9.5 3.2 7.4-23 9.5z" fill="#c8b6e2"/><path d="M31.5 13l4-1.7 3.2 7.4-4 1.7z" fill="#a8d0e2"/><path d="M21 26l-6.5 15M23 26l6 15" ${FN}/><path d="M38 31l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9zM12 8l.8 1.9 1.9.8-1.9.8-.8 1.9-.8-1.9-1.9-.8 1.9-.8z" fill="#f6d27a" stroke-width="1"/>`,
+monkey:`<circle cx="11" cy="24" r="5.2" fill="#c99a6e"/><circle cx="37" cy="24" r="5.2" fill="#c99a6e"/><circle cx="11" cy="24" r="2.4" fill="#f6c9b0" ${N}/><circle cx="37" cy="24" r="2.4" fill="#f6c9b0" ${N}/><circle cx="24" cy="24" r="13" fill="#c99a6e"/><path d="M24 20c-2-3-8-2.5-8.5 2-3 5 2 11 8.5 11s11.5-6 8.5-11c-.5-4.5-6.5-5-8.5-2z" fill="#f6e0c4"/>${eyes(23,20,28)}<path d="M21 28.5q3 2.4 6 0" ${FN}/>`,
+medal:`<path d="M14.5 6h7.5l4 10.5h-7.5z" fill="#a8d0e2"/><path d="M33.5 6H26l-4 10.5h7.5z" fill="#f0a48a"/><circle cx="24" cy="29" r="11.5" fill="#f6d27a"/><path d="M24 22.5l2 4 4.4.6-3.2 3 .8 4.4L24 32.4l-4 2.1.8-4.4-3.2-3 4.4-.6z" fill="#fffaf0" stroke-width="1.5"/>`,
+ghost:`<path d="M11.5 41V22a12.5 12.5 0 0 1 25 0v19l-4.2-3.2-4.1 3.2-4.2-3.2-4.2 3.2-4.1-3.2z" fill="#fffaf0"/>${eyes(22,19.5,28.5)}${blush(26,16.5,31.5)}<ellipse cx="24" cy="28" rx="2" ry="2.4" fill="#5b4434" ${N}/>`,
+yarn:`<circle cx="22" cy="24" r="14" fill="#f7c4bd"/><path d="M11 18c7 1 14 7 17 18M13.5 31c4-7 11-13 21-13M20 10.5c3 6 3 16-2 26.5M30 12.5c-6 4-11 10-13 17" ${FN}/><path d="M35 33c3 2 6 3 8 8" ${FN}/>`,
+train:`<rect x="12" y="11.5" width="5.5" height="9" rx="1" fill="#c99a6e"/><rect x="7.5" y="20" width="27" height="14" rx="3" fill="#f0a48a"/><rect x="26.5" y="11" width="13" height="23" rx="2.5" fill="#f0a48a"/><rect x="29.5" y="14.5" width="7" height="6.5" rx="1.5" fill="#a8d0e2"/><circle cx="15" cy="36" r="4.3" fill="#fffaf0"/><circle cx="31" cy="36" r="4.3" fill="#fffaf0"/><circle cx="12" cy="6.5" r="2.4" fill="#fff" stroke-width="1.5"/><circle cx="7" cy="5" r="1.7" fill="#fff" stroke-width="1.5"/><path d="M4 42h40" ${FN}/>`,
+wheat:`<path d="M24 42V12M24 42c-4-6-10-7-14-6M24 42c4-6 10-7 14-6" ${FN}/><g fill="#f6d27a"><ellipse cx="24" cy="9" rx="2.8" ry="4.5"/><ellipse cx="19.5" cy="16" rx="2.6" ry="4.3" transform="rotate(-30 19.5 16)"/><ellipse cx="28.5" cy="16" rx="2.6" ry="4.3" transform="rotate(30 28.5 16)"/><ellipse cx="19.5" cy="24" rx="2.6" ry="4.3" transform="rotate(-30 19.5 24)"/><ellipse cx="28.5" cy="24" rx="2.6" ry="4.3" transform="rotate(30 28.5 24)"/></g>`,
+magnifier:`<path d="M28.5 28.5l11 11" stroke="#c99a6e" stroke-width="6"/><path d="M28.5 28.5l11 11" ${FN}/><circle cx="20" cy="20" r="11.5" fill="#d4ebf2"/><path d="M14 17q1.6-4 5.5-5" stroke="#fff" ${FN}/>`,
+tiger:`<circle cx="12.5" cy="13" r="4.8" fill="#f2a66d"/><circle cx="35.5" cy="13" r="4.8" fill="#f2a66d"/><circle cx="24" cy="25" r="14.5" fill="#f2a66d"/><path d="M24 11v5M19 12l1.5 4M29 12l-1.5 4M10 24h5M10 28.5l5-1M38 24h-5M38 28.5l-5-1" ${FN}/><ellipse cx="24" cy="31" rx="7" ry="5.5" fill="#fffaf0"/>${eyes(23,18.5,29.5)}<ellipse cx="24" cy="28.5" rx="2" ry="1.4" fill="#5b4434" ${N}/><path d="M22 32q2 1.6 4 0" ${FN}/>`,
+vase:`<path d="M18.5 7h11M19.5 7c0 4.5-7.5 7-7.5 17 0 9.5 5 17 12 17s12-7.5 12-17c0-10-7.5-12.5-7.5-17" fill="#e6c49a"/><path d="M13.2 21h21.6M12.5 29h23" stroke="#e07a5f" ${FN}/><path d="M17 25l3-2.5 3 2.5 3-2.5 3 2.5 3-2.5" stroke-width="1.5" ${FN}/>`,
+books:`<rect x="7.5" y="13" width="9" height="28" rx="1.5" fill="#f0a48a"/><rect x="16.5" y="9" width="9" height="32" rx="1.5" fill="#a9cc98"/><path d="M27.5 13.5l8.5-2.5 7 28.5-8.5 2.5z" fill="#a8d0e2"/><path d="M7.5 18h9M16.5 15h9M16.5 35h9M29 19.5l8.5-2.3" ${FN}/><path d="M5 41.5h38" ${FN}/>`,
+rainbow:`<path d="M6 33a18 18 0 0 1 36 0" stroke="#f0a48a" stroke-width="4.5" ${FN}/><path d="M11 33a13 13 0 0 1 26 0" stroke="#f6d27a" stroke-width="4.5" ${FN}/><path d="M16 33a8 8 0 0 1 16 0" stroke="#a9cc98" stroke-width="4.5" ${FN}/><path d="M3.5 37a4 4 0 0 1 4-5 5 5 0 0 1 9 2 3 3 0 0 1-1 6h-9a3 3 0 0 1-3-3zM31.5 37a4 4 0 0 1 4-5 5 5 0 0 1 9 2 3 3 0 0 1-1 6h-9a3 3 0 0 1-3-3z" fill="#fffaf0"/>`,
+plane:`<path d="M6 27.5l34-15c2.5-1 4.5 1 3 3L28 31l-4 9.5-3-1 1-7.5-8.5 2.5-3.5 5-2-.8 1-6.5-4.5-2.5z" fill="#a8d0e2"/><path d="M20 22l-6-7.5 3-1.5 10 5" fill="#fffaf0"/>`,
+palette:`<path d="M24 7.5C13 7.5 5.5 15 5.5 24S12.5 40.5 21 40.5c3 0 4.2-2 3-4.6-1.2-3 .8-5.4 4-5.4h5.5c5 0 9-3 9-9C42.5 14 34.5 7.5 24 7.5z" fill="#f6e0c4"/><g ${N}><circle cx="15" cy="21" r="3.2" fill="#f0a48a"/><circle cx="21.5" cy="14.5" r="3.2" fill="#f6d27a"/><circle cx="30.5" cy="14.5" r="3.2" fill="#a9cc98"/><circle cx="36" cy="22" r="3.2" fill="#a8d0e2"/></g><circle cx="16" cy="31" r="3" fill="#fffaf0"/>`,
+coral:`<path d="M24 41V25M24 31c-6-2-9-7-9-13M15 22c-3-1-5-4-5-8M24 27c5-2 8-6 8-12M32 19c3-1 5-4 5-8M24 25c0-5 1-9-1-14" stroke="#f29a8a" stroke-width="4.5" ${FN}/><path d="M12 41.5h24" ${FN}/><circle cx="36" cy="33" r="1.8" fill="#a8d0e2"/><circle cx="39" cy="27" r="1.3" fill="#a8d0e2"/>`,
+fish:`<path d="M7 24c5-8.5 15-10.5 23-6l8.5-6.5v25L30 30c-8 4.5-18 2.5-23-6z" fill="#f2a66d"/><circle cx="14.5" cy="22.5" r="1.9" fill="#5b4434" ${N}/><path d="M21 19.5q3 4.5 0 9M26 19.5q3 4.5 0 9" ${FN}/><circle cx="42" cy="8" r="1.8" fill="#a8d0e2"/>`,
+balloon:`<path d="M20 30c-2 4 2 6 0 11M31 30c2 4-1 7 1 11" ${FN}/><ellipse cx="18.5" cy="18" rx="9.5" ry="11.5" fill="#f0a48a"/><ellipse cx="31" cy="20" rx="8.5" ry="10.5" fill="#a8d0e2"/><path d="M13.5 13q1.5-3.5 4.5-4" stroke="#fff" ${FN}/>`,
+flower:`<g fill="#f7c4bd"><circle cx="24" cy="13.5" r="6"/><circle cx="34" cy="21" r="6"/><circle cx="30" cy="32.5" r="6"/><circle cx="18" cy="32.5" r="6"/><circle cx="14" cy="21" r="6"/></g><circle cx="24" cy="24" r="5" fill="#f6d27a"/>`,
+stall:`<path d="M6.5 19l4.5-10h26l4.5 10z" fill="#f0a48a"/><path d="M15.5 9l-2 10M24 9v10M32.5 9l2 10" ${FN}/><path d="M6.5 19a4.3 4.3 0 0 0 8.7 0 4.3 4.3 0 0 0 8.8 0 4.3 4.3 0 0 0 8.7 0 4.3 4.3 0 0 0 8.8 0" fill="#fffaf0"/><path d="M9.5 23v18M38.5 23v18M6 41.5h36" ${FN}/><rect x="15" y="29" width="18" height="7" rx="2" fill="#f6d27a"/>`,
+film:`<rect x="7" y="18" width="34" height="23" rx="3" fill="#fffaf0"/><path d="M7 11.5l32-5 1.2 7-32 5z" fill="#8a6b55"/><path d="M14 10.5l4 6M22 9.2l4 6M30 8l4 6" stroke="#fffaf0" ${FN}/><path d="M7 25h34" ${FN}/><path d="M21 29.5l7 4-7 4z" fill="#f0a48a"/>`,
+dino:`<path d="M7 39c0-9 6-14 14-14h6l3-10c1-4 6-5 8.5-2.5 2.2 2.2 1 5.5-1.5 6.5l-2 1v13c0 4-2.5 6-6.5 6z" fill="#a9cc98"/><path d="M14 25.5l2-4 2.5 3.5 2-4 2.5 4" fill="#f6d27a" stroke-width="1.6"/><path d="M15 39v3.5M27 39v3.5" ${FN}/><circle cx="34" cy="13" r="1.6" fill="#5b4434" ${N}/>`,
+ball:`<circle cx="24" cy="24" r="15" fill="#f6d27a"/><path d="M9 24h30M24 9v30M13.5 13.5c6 6 6 15 0 21M34.5 13.5c-6 6-6 15 0 21" ${FN}/>`,
+lantern:`<path d="M24 4v4" ${FN}/><rect x="17" y="8" width="14" height="4" rx="1.5" fill="#c99a6e"/><ellipse cx="24" cy="23" rx="13" ry="11.5" fill="#f0a48a"/><path d="M24 11.5v23M17.5 13c-3 6-3 14 0 20M30.5 13c3 6 3 14 0 20" ${FN}/><rect x="17" y="34" width="14" height="4" rx="1.5" fill="#c99a6e"/><path d="M24 38v6M21 44h6" stroke="#f6d27a" ${FN}/>`,
+bike:`<circle cx="13" cy="31" r="8" fill="#fffaf0"/><circle cx="35" cy="31" r="8" fill="#fffaf0"/><path d="M13 31l7-13h12l3 13M20 18l6 13h-13M32 18l-6 13M17 14h6M30 13h4.5" stroke="#e07a5f" ${FN}/>`,
+paw:`<ellipse cx="24" cy="31" rx="10" ry="8.5" fill="#d9a77a"/><g fill="#d9a77a"><ellipse cx="12" cy="20" rx="4" ry="5"/><ellipse cx="19" cy="12.5" rx="4" ry="5"/><ellipse cx="29" cy="12.5" rx="4" ry="5"/><ellipse cx="36" cy="20" rx="4" ry="5"/></g>`,
+wave:`<path d="M5 30c4-12 13-17 21-15-6 3-6 10 0 12 5 1.5 9-2 10-5 2 3 5 4 7 3v15H5z" fill="#a8d0e2"/><path d="M5 39c3-2 5-2 8 0s5 2 8 0 5-2 8 0 5 2 8 0 4-2 6-1" stroke="#fff" ${FN}/>`,
+tent:`<path d="M24 8L6 40h36z" fill="#a9cc98"/><path d="M24 22l-7 18h14z" fill="#fffaf0"/><path d="M24 8l-3-4M24 8l3-4M3 40.5h42" ${FN}/>`,
+museum:`<path d="M5.5 17L24 6.5 42.5 17z" fill="#f0a48a"/><rect x="7.5" y="17" width="33" height="4" fill="#fffaf0"/><path d="M12 21v15M20 21v15M28 21v15M36 21v15" stroke-width="3" ${FN}/><rect x="5.5" y="36" width="37" height="5" rx="1" fill="#e6c49a"/>`,
+house:`<path d="M6 22L24 7l18 15" fill="#f0a48a"/><path d="M10 20v20h28V20" fill="#fffaf0"/><rect x="20" y="29" width="8" height="11" rx="1.5" fill="#c99a6e"/><rect x="13" y="24" width="5" height="5" rx="1" fill="#a8d0e2"/><rect x="30" y="24" width="5" height="5" rx="1" fill="#a8d0e2"/>`,
+gift:`<rect x="8" y="19" width="32" height="22" rx="3" fill="#f7c4bd"/><rect x="6" y="14" width="36" height="7" rx="2" fill="#f0a48a"/><path d="M24 14v27" stroke="#f6d27a" stroke-width="4"/><path d="M24 14c-3-7-12-8-10-2 1 2 5 2 10 2zM24 14c3-7 12-8 10-2-1 2-5 2-10 2z" fill="#f6d27a"/>`,
+food:`<path d="M7 24h34c0 9-7.5 16-17 16S7 33 7 24z" fill="#f6e0c4"/><path d="M13 24c0-6 5-10 11-10s11 4 11 10" fill="#fffaf0"/><path d="M30 6l-6 12M37 9l-9 10" ${FN}/><circle cx="19" cy="20" r="2" fill="#f0a48a" ${N}/><circle cx="27" cy="19" r="2" fill="#a9cc98" ${N}/>`,
+car:`<path d="M6 31v-6l5-9h22l7 9h2v6z" fill="#f6d27a"/><path d="M14 18h7v7h-10zM24 18h8l5 7H24z" fill="#a8d0e2"/><circle cx="14" cy="32" r="4.3" fill="#fffaf0"/><circle cx="34" cy="32" r="4.3" fill="#fffaf0"/>`,
+pray:`<path d="M24 41V20c0-6 2-12 0-14-2 2-5 7-5 13l-6 8c-2 3-1 6 1 8l6 6" fill="#fde3cf"/><path d="M24 41V20c0-6-2-12 0-14 2 2 5 7 5 13l6 8c2 3 1 6-1 8l-6 6" fill="#fde3cf"/>`
+};
+const EMO={};
+const setE=(k,s)=>[...s].forEach(c=>{if(c!=='️'&&c!==' ')EMO[c]=k;});
+setE('heart','💗❤♡♥💕💖💞💓🧡💛🩷');
+setE('moon','🌙🌛🌜🌃');
+setE('star','⭐🌟');
+setE('calendar','📅📆🗓');
+setE('frame','🖼🏞');
+setE('ticket','🎟🎫');
+setE('hsr','🚄🚅🚝');
+setE('slide','🛝🎢');
+setE('money','💰💵💲🪙');
+setE('pin','📍📌🗺');
+setE('baby','👶🧒👧👦👨👩👪');
+setE('bulb','💡');
+setE('clock','⏰⏱⌚🕐');
+setE('list','📋📝🗒');
+setE('hourglass','⏳⌛');
+setE('sprout','🌱');
+setE('leaf','🍂🍁');
+setE('herb','🌿🍃☘🍀🌴🌵');
+setE('sparkle','✨💫⚡');
+setE('sun','☀🌞🌤⛅');
+setE('xmas','🎄🎅🤶⛄☃❄');
+setE('tree','🌳🌲');
+setE('teddy','🧸🐻🐼🐨');
+setE('boat','⛵🚤🛶⛴🚢⚓');
+setE('squid','🦑🐙🦀🦐');
+setE('flask','🧪🔬⚗🧬🤖🧲');
+setE('music','🎶🎵🎹🎻🎸🥁🎺🎷');
+setE('mic','🎤🎙');
+setE('otter','🦦🦫🐹🐭🦔');
+setE('telescope','🔭🌌🪐🚀🛸🌠');
+setE('monkey','🐒🐵');
+setE('medal','🎖🏅🏆🥇');
+setE('ghost','👹👻👺🎃💀');
+setE('yarn','🧶🧵🪡✂');
+setE('train','🚂🚉🚃🚆🚇🚈🚞');
+setE('wheat','🌾🌽');
+setE('magnifier','🔍🔎🕵');
+setE('tiger','🐯🐅🦁🐱🐈');
+setE('vase','🏺🏛');
+setE('books','📚📖📕📗📘📙');
+setE('rainbow','🌈');
+setE('plane','✈🛩🛫');
+setE('palette','🎨🖍🖌✏🖊');
+setE('coral','🪸');
+setE('fish','🐠🐟🐡🐳🐬🦈🐢');
+setE('balloon','🎈🎉🎊🎪🎡🎠🥳🪁');
+setE('flower','🌸🌷🌻🌼🌹💐🌺');
+setE('stall','🛍🛒🏪🏬🧺');
+setE('film','🎭🎬🎥📽🎞📺');
+setE('dino','🦕🦖🐊🦎');
+setE('ball','⚽🏀🏐⚾🎾🏃🤸🧗🏊🛹🛼');
+setE('lantern','🏮🎆🎇🎐');
+setE('bike','🚲🛴');
+setE('paw','🐾🐶🐕🐄🐮🐑🐐🐔🐓🐤🐰🐇🐷🐴🦒🐘🦓🦜🦉🐧🦆🐸🦋🐝🐞');
+setE('wave','🌊🏖🏝💦💧');
+setE('tent','⛺🏕⛰🏔');
+setE('museum','🏯🏰🏫🏟🕍⛩');
+setE('house','🏠🏡🏘');
+setE('gift','🎁');
+setE('food','🍰🍡🍜🍓🍱🍙🍦🍧🍩🍪🧁🍭🍬🍫🍿🍔🍕🥟🍳🫖☕🍵🧋🍹');
+setE('car','🚗🚙🚌🚐🚒🚓🚑🚜🛻');
+setE('pray','🙏👏🙌👋');
+function ico(k,c){return `<svg class="ic${c?' '+c:''}" viewBox="0 0 48 48" aria-hidden="true"><g filter="url(#rough)" stroke="#5b4434" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${IC[k]||IC.balloon}</g></svg>`;}
+const EMORE=/(\p{Extended_Pictographic})️?/gu;
+function iconify(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentNode;
+    if(!p||/^(SCRIPT|STYLE|TEXTAREA|TITLE)$/.test(p.nodeName)) return NodeFilter.FILTER_REJECT;
+    EMORE.lastIndex=0; return EMORE.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;}});
+  const list=[]; while(w.nextNode()) list.push(w.currentNode);
+  list.forEach(n=>{
+    const s=n.nodeValue; let html='', last=0, hit=false; EMORE.lastIndex=0; let m;
+    while((m=EMORE.exec(s))){const k=EMO[m[1]]; if(!k) continue; hit=true;
+      html+=esc(s.slice(last,m.index))+ico(k); last=m.index+m[0].length;}
+    if(!hit) return;
+    html+=esc(s.slice(last));
+    const t=document.createElement('template'); t.innerHTML=html.replace(/(<\/svg>) /g,'$1 ');
+    n.parentNode.replaceChild(t.content,n);
+  });
+}
+iconify(document.body);
+new MutationObserver(ms=>ms.forEach(m=>{
+  if(m.type==='characterData'){ if(m.target.parentNode) iconify(m.target.parentNode); return; }
+  m.addedNodes.forEach(x=>{ if(x.nodeType===1&&x.nodeName!=='svg') iconify(x); else if(x.nodeType===3&&x.parentNode) iconify(x.parentNode); });
+})).observe(document.body,{childList:true,subtree:true,characterData:true});
+
 fetch('events.json?v='+Date.now()).then(r=>r.json()).then(init).catch(()=>{
   document.getElementById('list').innerHTML='<div class="empty">資料載入失敗，請重新整理頁面 🙏</div>';
 });
