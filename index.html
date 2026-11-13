@@ -174,6 +174,48 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
 .ac .lk{margin-top:8px;font-size:12.5px;display:flex;gap:12px}
 .ac .lk a{color:var(--tea-d)}
 
+/* favorites */
+.fav{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:0;background:#fbf3ea;display:grid;place-items:center;cursor:pointer;padding:0;
+ box-shadow:inset 0 0 0 1.5px #f1dcc8;transition:transform .15s;-webkit-tap-highlight-color:transparent;z-index:2}
+.fav svg{width:20px;height:20px;fill:none;stroke:#c98b55;stroke-width:2;transition:.2s}
+.fav.on{background:#fde8e1;box-shadow:inset 0 0 0 1.5px #f6c9b8}
+.fav.on svg{fill:#e9967a;stroke:#e9967a}
+.fav.pop{animation:pop .35s}
+@keyframes pop{40%{transform:scale(1.25)}100%{transform:scale(1)}}
+.card .top{padding-right:40px}
+.pc,.ac{position:relative}
+.pc .row1{padding-right:40px}.ac .t{padding-right:36px}
+.ac .fav{top:8px;right:8px;width:32px;height:32px}.ac .fav svg{width:17px;height:17px}
+.more li{display:flex;align-items:center;gap:8px}
+.more li a{flex:1;min-width:0}
+.more li .fav{position:static;flex:0 0 32px;width:32px;height:32px}.more li .fav svg{width:16px;height:16px}
+.qn{position:relative}
+.qn .badge{position:absolute;top:6px;right:calc(50% - 30px);min-width:18px;height:18px;border-radius:9px;background:#e9967a;color:#fff;font-size:11px;
+ font-style:normal;font-family:"Noto Sans TC",sans-serif;display:grid;place-items:center;padding:0 5px;line-height:1}
+.qn .badge:empty{display:none}
+.favbox{background:linear-gradient(135deg,#fff7f2,#fdf0ea);border:1.5px dashed #f1cdbd;border-radius:24px;padding:14px 14px 6px}
+.favbox .sec-t{margin:2px 4px 10px;font-size:19px}
+.fv-empty{display:flex;gap:12px;align-items:center;background:var(--paper);border-radius:18px;padding:14px;margin-bottom:8px;font-size:14px;color:var(--sub)}
+.fv-empty svg{flex:0 0 46px}
+.fv{background:var(--paper);border:1.5px solid #f3e2d6;border-radius:18px;margin-bottom:8px;overflow:hidden}
+.fv summary{list-style:none;display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;cursor:pointer;position:relative}
+.fv summary::-webkit-details-marker{display:none}
+.fv .fe{flex:0 0 40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:22px;background:#fcebe3}
+.fv .fe.tn{background:var(--tn-bg)}.fv .fe.pt{background:var(--pt-bg)}.fv .fe.tw{background:#efe8f3}
+.fv .fb{flex:1;min-width:0}
+.fv .ft{font-weight:700;font-size:15px;line-height:1.35}
+.fv .fm{font-size:12.5px;color:var(--sub);margin-top:1px}
+.fv .fm .left{color:#fff;background:#e9967a;border-radius:999px;padding:0 8px;font-size:11.5px;margin-left:4px;white-space:nowrap}
+.fv summary .fav{position:static;flex:0 0 34px;width:34px;height:34px}
+.fv .arrow{font-size:12px;color:#c98b55;transition:.2s}
+.fv[open] .arrow{transform:rotate(180deg)}
+.fv .fbody{padding:0 8px 8px}
+.fv .fbody .card,.fv .fbody .pc,.fv .fbody .ac{margin:0;border-radius:16px}
+.fv .fbody .fav{display:none}
+.fv .fbody .card .top{padding-right:0}
+.fv-go{display:block;text-align:center;font-size:13px;color:var(--tea-d);padding:4px 0 6px}
+.fv-hint{font-size:12px;color:var(--sub);text-align:center;margin:2px 0 8px}
+
 .end{margin-top:30px;text-align:center;font-size:12.5px;color:var(--sub)}
 .end svg{width:120px;display:block;margin:0 auto 6px}
 </style>
@@ -216,6 +258,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
   </header>
 
   <nav class="qnav" id="qnav">
+    <a data-t="favSec" class="qn" style="--c:#fde4dc"><i>💗</i><span>我的收藏</span><b class="badge" id="favN"></b></a>
     <a data-t="todaySec" class="qn" style="--c:#e9e2f3"><i>🌙</i><span>今晚</span></a>
     <a data-t="picks-sec" class="qn" style="--c:#fbe7c8"><i>⭐</i><span>必去 Top 3</span></a>
     <a data-t="events-sec" class="qn" style="--c:#fcebe3"><i>📅</i><span>週末活動</span></a>
@@ -224,6 +267,13 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",s
     <a data-t="twSec" class="qn" style="--c:#efe8f3"><i>🚄</i><span>全台 Top 3</span></a>
     <a data-t="always-sec" class="qn" style="--c:#e5f1e8"><i>🛝</i><span>放電基地</span></a>
   </nav>
+
+  <section class="sec" id="favSec">
+    <div class="favbox">
+      <h2 class="sec-t h">💗 我的收藏 <small id="favNote">活動結束後會自動移出</small></h2>
+      <div id="favList"></div>
+    </div>
+  </section>
 
   <section class="sec today" id="todaySec" style="display:none">
     <h2 class="sec-t h">🌙 <span id="todayLabel"></span> <small id="todayNote"></small></h2>
@@ -304,15 +354,18 @@ let D=null, city='全部', opts=new Set();
 
 function hasDay(e,day){return (e.days||['sat','sun']).includes(day);}
 function placeHtml(p){p=esc(p);const i=p.indexOf('（');return i>0?p.slice(0,i)+'<br><span class="addr">'+p.slice(i+1).replace(/）$/,'')+'</span>':p;}
+const HEART='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.4-4.5-9.2-9.1C1.5 7.9 3.5 4.6 6.9 4.6c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.4 0 5.4 3.3 4.1 6.6-1.8 4.6-9.2 9.1-9.2 9.1z" stroke-linejoin="round"/></svg>';
+const favBtn=k=>`<button class="fav" data-k="${esc(k)}" aria-label="收藏">${HEART}</button>`;
 function card(e,tw,ex){
   const c=tw?'tw':(cls[e.city]||'kh')+(ex?' ex':'');
+  const fk=(ex?'x:':'e:')+e.id;
   const tags=[`<span class="tag city">${esc(e.city)}</span>`];
   if(ex&&e.end){const n=Math.ceil((new Date(e.end+'T23:59:59+08:00')-Date.now())/864e5); if(e.end>='2099') tags.push('<span class="tag">常設展</span>'); else if(n<=21) tags.push(`<span class="tag left">剩 ${n} 天</span>`);}
   if(e.hot) tags.push(`<span class="tag hot">${esc(e.hot)}</span>`);
   if(e.free) tags.push('<span class="tag free">免費</span>');
   if(e.signup) tags.push('<span class="tag signup">要先報名/登記</span>');
   if(e.night) tags.push('<span class="tag night">傍晚以後也精彩</span>');
-  return `<article class="card ${c}" id="${esc(e.id)}">
+  return `<article class="card ${c}" id="${esc(e.id)}">${favBtn(fk)}
     <div class="top"><div class="emo">${esc(e.emoji)}</div>
       <div><div class="tags">${tags.join('')}</div><h3>${esc(e.title)}</h3></div></div>
     <dl class="info">
@@ -335,30 +388,38 @@ function render(){
   if(opts.has('sun')) L=L.filter(e=>hasDay(e,'sun'));
   const order={'高雄':0,'台南':1,'屏東':2};
   L.sort((a,b)=>(order[a.city]-order[b.city]));
-  document.getElementById('list').innerHTML=L.length?L.map(card).join(''):'<div class="empty">這個條件下沒有活動，換個篩選看看 🌱</div>';
+  document.getElementById('list').innerHTML=L.length?L.map(e=>card(e)).join(''):'<div class="empty">這個條件下沒有活動，換個篩選看看 🌱</div>';
   document.getElementById('count').textContent=`共 ${L.length} 個活動`;
   const CC={'高雄':'#e9967a','台南':'#d9a441','屏東':'#7fae8f'};
   const M=(D.more||[]).filter(m=>city==='全部'||m.city===city);
   document.getElementById('moreBox').style.display=M.length?'':'none';
   document.getElementById('moreSum').textContent=`📋 還有 ${M.length} 個活動`;
-  document.getElementById('moreList').innerHTML=M.map(m=>`<li><a href="${esc(m.url)}" target="_blank" rel="noopener"><div class="mt"><span class="ct" style="background:${CC[m.city]||'#9a86b0'}">${esc(m.city)}</span>${esc(m.title)}</div><div class="mm">${esc(m.date)}・${esc(m.place)}${m.note?`・${esc(m.note)}`:''}　<span class="go">看詳細 ↗</span></div></a></li>`).join('');
+  document.getElementById('moreList').innerHTML=M.map(m=>`<li>${moreHtml(m)}${favBtn('m:'+m.title)}</li>`).join('');
   const today=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
   const X=(D.exhibits||[]).filter(e=>(!e.end||e.end>=today)&&(city==='全部'||e.city===city)).sort((a,b)=>(a.end||'').localeCompare(b.end||''));
   const P=(D.presale||[]).filter(p=>(!p.saleEnd||p.saleEnd>=today)&&(city==='全部'||p.city===city));
   document.getElementById('preBox').style.display=P.length?'':'none';
-  document.getElementById('preList').innerHTML=P.map(p=>{const n=p.saleEnd?Math.ceil((new Date(p.saleEnd+'T23:59:59+08:00')-Date.now())/864e5):null;
-    return `<div class="pc"><div class="row1"><div class="e">${esc(p.emoji)}</div><div><h4>${esc(p.title)}</h4><div class="meta">${esc(p.city)}・展期 ${esc(p.period)}</div></div></div>
+  document.getElementById('preList').innerHTML=P.map(preHtml).join('');
+  document.getElementById('exSec').style.display=((D.exhibits||[]).length||(D.presale||[]).length)?'':'none';
+  if(typeof syncNav==='function') syncNav();
+  document.getElementById('exList').innerHTML=X.length?X.map(e=>card(e,false,true)).join(''):'<div class="empty">這個縣市目前沒有收錄展覽 🌱</div>';
+  syncHearts();
+}
+const CC={'高雄':'#e9967a','台南':'#d9a441','屏東':'#7fae8f'};
+function moreHtml(m){return `<a href="${esc(m.url)}" target="_blank" rel="noopener"><div class="mt"><span class="ct" style="background:${CC[m.city]||'#9a86b0'}">${esc(m.city)}</span>${esc(m.title)}</div><div class="mm">${esc(m.date)}・${esc(m.place)}${m.note?`・${esc(m.note)}`:''}　<span class="go">看詳細 ↗</span></div></a>`;}
+function alHtml(a){return `<div class="ac ${cls[a.city]||''}">${favBtn('a:'+a.title)}
+    <span class="tag" style="background:var(--${cls[a.city]}-bg)">${esc(a.city)}</span>
+    <div class="t">${esc(a.emoji)} ${esc(a.title)}</div><p>${esc(a.desc)}</p>
+    <div class="lk"><a href="${mapUrl(a.map||a.title)}" target="_blank" rel="noopener">地圖 ↗</a><a href="${esc(a.src)}" target="_blank" rel="noopener">介紹 ↗</a></div></div>`;}
+function preHtml(p){const n=p.saleEnd?Math.ceil((new Date(p.saleEnd+'T23:59:59+08:00')-Date.now())/864e5):null;
+    return `<div class="pc">${favBtn('p:'+p.id)}<div class="row1"><div class="e">${esc(p.emoji)}</div><div><h4>${esc(p.title)}</h4><div class="meta">${esc(p.city)}・展期 ${esc(p.period)}</div></div></div>
     <div class="prices">${(p.prices||[]).map(x=>`<div class="price">${esc(x.label)}<b>$${esc(x.price)}</b></div>`).join('')}</div>
     <div class="sale">⏳ ${esc(p.saleText)}${n!==null?` <span class="left">剩 ${n} 天</span>`:''}</div>${p.note?`<div class="sale" style="color:var(--sub)">💡 ${esc(p.note)}</div>`:''}
     <div class="sale">📍 ${esc(p.place)}<br><a href="${mapUrl(p.map||p.place)}" target="_blank" rel="noopener" style="color:var(--tea-d);margin-left:1.6em">在地圖上打開 ↗</a></div>
     ${p.kids?`<div class="sale">👶 ${esc(p.kids)}</div>`:''}
     <ul class="pts">${(p.points||[]).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
     <div class="buys">${(p.buy||[]).map(b=>`<a class="buybtn" href="${esc(b.url)}" target="_blank" rel="noopener">🎫 ${esc(b.name)} 買票 ↗</a>`).join('')}</div>
-    <div class="src">資料來源：<a href="${esc(p.src)}" target="_blank" rel="noopener">${esc(p.srcName)}</a></div></div>`}).join('');
-  document.getElementById('exSec').style.display=((D.exhibits||[]).length||(D.presale||[]).length)?'':'none';
-  if(typeof syncNav==='function') syncNav();
-  document.getElementById('exList').innerHTML=X.length?X.map(e=>card(e,false,true)).join(''):'<div class="empty">這個縣市目前沒有收錄展覽 🌱</div>';
-}
+    <div class="src">資料來源：<a href="${esc(p.src)}" target="_blank" rel="noopener">${esc(p.srcName)}</a></div></div>`;}
 function init(d){
   D=d;
   document.getElementById('week').textContent=d.week;
@@ -371,23 +432,111 @@ function init(d){
     city='全部';opts.clear();syncChips();render();
     const el=document.getElementById(b.dataset.id); if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
   });
-  document.getElementById('always').innerHTML=(d.always||[]).map(a=>`<div class="ac ${cls[a.city]||''}">
-    <span class="tag" style="background:var(--${cls[a.city]}-bg)">${esc(a.city)}</span>
-    <div class="t">${esc(a.emoji)} ${esc(a.title)}</div><p>${esc(a.desc)}</p>
-    <div class="lk"><a href="${mapUrl(a.map||a.title)}" target="_blank" rel="noopener">地圖 ↗</a><a href="${esc(a.src)}" target="_blank" rel="noopener">介紹 ↗</a></div></div>`).join('');
+  document.getElementById('always').innerHTML=(d.always||[]).map(alHtml).join('');
   const td=d.today, now=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
   if(td && td.date===now && (td.items||[]).length){
     document.getElementById('todaySec').style.display='';
     document.getElementById('todayLabel').textContent=td.label||'今天還能去';
     document.getElementById('todayNote').textContent=td.note||'';
-    document.getElementById('todayList').innerHTML=td.items.map(card).join('');
+    document.getElementById('todayList').innerHTML=td.items.map(e=>card(e)).join('');
   }
   if((d.national||[]).length){
     document.getElementById('twSec').style.display='';
     document.getElementById('twList').innerHTML=d.national.map(e=>card(e,true)).join('');
   }
+  // 收藏：建立目前資料的索引，並用最新資料更新已收藏的項目
+  CUR={};
+  (d.events||[]).forEach(e=>CUR['e:'+e.id]={k:'e',d:e});
+  ((d.today&&d.today.items)||[]).forEach(e=>{if(!CUR['e:'+e.id]) CUR['e:'+e.id]={k:'e',d:e};});
+  (d.national||[]).forEach(e=>CUR['e:'+e.id]={k:'tw',d:e});
+  (d.exhibits||[]).forEach(e=>CUR['x:'+e.id]={k:'x',d:e});
+  (d.presale||[]).forEach(e=>CUR['p:'+e.id]={k:'p',d:e});
+  (d.always||[]).forEach(e=>CUR['a:'+e.title]={k:'a',d:e});
+  (d.more||[]).forEach(e=>CUR['m:'+e.title]={k:'m',d:e});
+  Object.keys(FAV).forEach(k=>{const c=CUR[k]; if(c){FAV[k].k=c.k;FAV[k].d=c.d;FAV[k].end=endOf(c.k,c.d);}});
+  saveFav();
   render();
+  renderFav(true);
 }
+
+/* ===== 收藏 ===== */
+let CUR={}, FAV={};
+const FKEY='weekend-favs-v1';
+try{FAV=JSON.parse(localStorage.getItem(FKEY)||'{}')||{};}catch(_){FAV={};}
+function saveFav(){try{localStorage.setItem(FKEY,JSON.stringify(FAV));}catch(_){}}
+const twToday=()=>new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
+// 從「11/6 – 2027/1/3（每天）」這類文字找出最後一天
+function lastDate(s){
+  const re=/(?:(\d{4})\/)?(\d{1,2})\/(\d{1,2})/g; let m, last=null;
+  while((m=re.exec(String(s||'')))) last=m;
+  if(!last) return null;
+  const base=(D&&D.sat)||twToday(); const by=+base.slice(0,4), bm=+base.slice(5,7);
+  const mo=+last[2], dy=+last[3]; let y=last[1]?+last[1]:by;
+  if(!last[1]&&mo<bm-5) y++;
+  return `${y}-${String(mo).padStart(2,'0')}-${String(dy).padStart(2,'0')}`;
+}
+function endOf(k,d){
+  if(k==='a') return null;                                   // 放電基地：沒有期限
+  if(k==='x'){ if(d.end&&d.end>='2099') return null; return d.end||lastDate(d.date); }  // 常設展沒有期限
+  if(k==='p') return lastDate(d.period)||d.saleEnd||null;    // 預售：到展期結束
+  return d.end||lastDate(d.date)||(D&&D.sun)||null;          // 一般活動
+}
+function dropExpired(){
+  const t=twToday(); let n=0;
+  Object.keys(FAV).forEach(k=>{const e=FAV[k].end; if(e&&e<t){delete FAV[k];n++;}});
+  if(n) saveFav();
+  return n;
+}
+function toggleFav(k,btn){
+  if(FAV[k]){delete FAV[k]; toast('已經移出收藏');}
+  else{const c=CUR[k]; if(!c) return; FAV[k]={k:c.k,d:c.d,end:endOf(c.k,c.d),at:twToday()}; toast('收藏好了 💗');}
+  saveFav(); renderFav(false); syncHearts();
+  if(btn){btn.classList.remove('pop');void btn.offsetWidth;btn.classList.add('pop');}
+}
+function syncHearts(){
+  document.querySelectorAll('.fav[data-k]').forEach(b=>{const on=!!FAV[b.dataset.k];b.classList.toggle('on',on);b.setAttribute('aria-label',on?'取消收藏':'收藏');});
+  const n=Object.keys(FAV).length; const el=document.getElementById('favN'); if(el) el.textContent=n||'';
+}
+function favBody(f){
+  const d=f.d;
+  if(f.k==='e') return card(d).replace(/ id="[^"]*"/,'');
+  if(f.k==='tw') return card(d,true).replace(/ id="[^"]*"/,'');
+  if(f.k==='x') return card(d,false,true).replace(/ id="[^"]*"/,'');
+  if(f.k==='p') return preHtml(d);
+  if(f.k==='a') return alHtml(d);
+  return '';
+}
+function favMeta(f){
+  const d=f.d, city=esc(d.city||'');
+  if(f.k==='a') return `${city}・隨時都能去`;
+  if(f.k==='p'){const e=f.end; return e?`${city}・展到 ${+e.slice(0,4)!==+twToday().slice(0,4)?e.slice(0,4)+'/':''}${+e.slice(5,7)}/${+e.slice(8,10)}`:`${city}・預售中`;}
+  return `${city}・${esc(d.date||'')}`;
+}
+function renderFav(onLoad){
+  const n=dropExpired();
+  const t=twToday(), keys=Object.keys(FAV);
+  keys.sort((a,b)=>(FAV[a].end||'9999').localeCompare(FAV[b].end||'9999'));
+  const box=document.getElementById('favList');
+  if(!keys.length){
+    box.innerHTML=`<div class="fv-empty"><svg viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="21" fill="#fde8e1"/><path d="M23 33s-8-4.9-10-9.9c-1.4-3.6.8-7.1 4.5-7.1 2.3 0 3.9 1.3 5.5 3.2 1.6-1.9 3.2-3.2 5.5-3.2 3.7 0 5.9 3.5 4.5 7.1-2 5-10 9.9-10 9.9z" fill="#e9967a"/><circle cx="35" cy="12" r="2" fill="#f6d28b"/><circle cx="10" cy="14" r="1.5" fill="#c9a27e"/></svg>
+      <div>看到想去的活動<br>按卡片右上角的 ♡ 就能收起來</div></div>`;
+  }else{
+    box.innerHTML=keys.map(k=>{const f=FAV[k], d=f.d;
+      let left='';
+      if(f.end){const dd=Math.round((new Date(f.end+'T00:00:00+08:00')-new Date(t+'T00:00:00+08:00'))/864e5);
+        if(dd===0) left='<span class="left">今天最後一天</span>'; else if(dd<=14) left=`<span class="left">剩 ${dd} 天</span>`;}
+      const ec=f.k==='tw'?'tw':(cls[d.city]||'kh');
+      const body=f.k==='m'?`<a class="fv-go" href="${esc(d.url)}" target="_blank" rel="noopener">看詳細資訊 ↗</a>`:favBody(f);
+      return `<details class="fv"><summary><div class="fe ${ec}">${esc(d.emoji||'📌')}</div>
+        <div class="fb"><div class="ft">${esc(d.title)}</div><div class="fm">${favMeta(f)}${left}</div></div>
+        <span class="arrow">▾</span>${favBtn(k)}</summary><div class="fbody">${body}</div></details>`;}).join('')
+      +'<div class="fv-hint">點一下看詳細・再按 ♥ 就取消收藏</div>';
+  }
+  syncHearts();
+  if(n) setTimeout(()=>toast(`有 ${n} 個收藏的活動結束了，已幫妳移出 🍂`),onLoad?700:0);
+}
+document.addEventListener('click',ev=>{const b=ev.target.closest('.fav[data-k]'); if(!b) return; ev.preventDefault(); ev.stopPropagation(); toggleFav(b.dataset.k,b);},true);
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='visible'&&D) renderFav(false); });
 function syncChips(){
 document.querySelectorAll('#cityChips .chip').forEach(x=>x.classList.toggle('on',x.dataset.c===city));
   document.querySelectorAll('#optChips .chip').forEach(x=>x.classList.toggle('on',opts.has(x.dataset.o)));
@@ -396,7 +545,7 @@ document.querySelectorAll('#cityChips .chip').forEach(b=>b.onclick=()=>{city=b.d
 document.querySelectorAll('#optChips .chip').forEach(b=>b.onclick=()=>{const o=b.dataset.o;opts.has(o)?opts.delete(o):opts.add(o);syncChips();render();});
 
 function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(window._tt);window._tt=setTimeout(()=>el.classList.remove('on'),2200);}
-const BUILD='202611090935';
+const BUILD='202611131200';
 const LOADED=Date.now();
 async function checkNew(manual){
   const b=document.getElementById('reloadBtn'); if(manual) b.classList.add('spin');
