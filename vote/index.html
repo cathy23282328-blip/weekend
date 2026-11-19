@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投票日懶人包｜紅豆🫘</title>
+<meta name="description" content="跟孩子聊「選舉是什麼」的科普包：一支影片、三份學習單、一個互動小遊戲，印出來就能用。">
+<meta property="og:title" content="投票日懶人包｜Let's Vote!">
+<meta property="og:description" content="一支影片、三份學習單、一個互動小遊戲，跟孩子聊選舉。">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbf7f0;--card:#ffffff;--ink:#4a3a2e;--soft:#8a7564;--milk:#e9dccb;
+  --sage:#7e9a7a;--sky:#6f8fb3;--stamp:#c8473d;
+  --display:"LXGW WenKai TC","Noto Sans TC",serif;
+  --body:"Noto Sans TC",system-ui,sans-serif;
+  --en:"Fredoka","Noto Sans TC",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;overflow:hidden;background:#f6efdf}
+.hero img.bg{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 60%}
+.hero .title{position:absolute;inset:0;padding:clamp(18px,5vw,56px);display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:linear-gradient(180deg,rgba(251,247,240,.92) 0%,rgba(251,247,240,.55) 38%,rgba(251,247,240,0) 62%)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,7vw,68px);line-height:1.15;margin:4px 0 0}
+h1 .en{display:block;font-family:var(--en);font-weight:600;font-size:.42em;color:var(--sky);letter-spacing:.02em;margin-top:6px}
+.by{display:inline-block;margin-top:8px;font-size:14px;font-weight:500;text-decoration:none;background:var(--card);border:1.5px solid var(--milk);border-radius:999px;padding:3px 12px}
+.lead{margin:6px 0 0;font-size:clamp(14px,2.2vw,18px);max-width:30em;background:rgba(251,247,240,.88);padding:4px 10px;border-radius:10px;margin-left:-10px}
+
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.fact{background:var(--card);border:1.5px solid var(--milk);border-radius:12px;padding:8px 14px;font-size:14px}
+.fact b{font-family:var(--en);font-size:18px;color:var(--stamp);margin-right:4px}
+
+section{padding:44px 0 8px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.no{flex:none;width:44px;height:44px;border:2px solid var(--ink);border-radius:8px;display:grid;place-items:center;font-family:var(--en);font-weight:600;font-size:22px;background:var(--card)}
+h2{font-family:var(--display);font-size:clamp(24px,4vw,30px);margin:0;line-height:1.3}
+.sec-sub{margin:-8px 0 20px 58px;color:var(--soft);font-size:15px}
+
+.video{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:center}
+.video a.thumb{position:relative;display:block;border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(74,58,46,.14)}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play span{width:72px;height:72px;border-radius:50%;background:rgba(200,71,61,.92);display:grid;place-items:center;transition:transform .2s}
+.play span::after{content:"";margin-left:6px;border-left:24px solid #fff;border-top:15px solid transparent;border-bottom:15px solid transparent}
+.video a.thumb:hover .play span{transform:scale(1.08)}
+.video ul{margin:0;padding-left:1.2em}
+.video li{margin:4px 0}
+
+.sheets{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sheet{background:var(--card);border:1.5px solid var(--milk);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.sheet .pv{background:#f3ece0;border-radius:10px;padding:10px;display:grid;place-items:center;aspect-ratio:1/1}
+.sheet .pv img{max-height:100%;width:auto;box-shadow:0 3px 10px rgba(74,58,46,.18);border-radius:3px}
+.sheet h3{margin:0;font-size:18px;line-height:1.4}
+.sheet .meta{font-size:13px;color:var(--soft)}
+.sheet ul{margin:0;padding-left:1.1em;font-size:14px;flex:1}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:700;font-size:15px;border-radius:999px;padding:9px 18px;background:var(--ink);color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.note{font-size:13px;color:var(--soft);margin-top:10px}
+
+.game{background:var(--card);border:1.5px solid var(--milk);border-radius:20px;padding:22px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.cands{display:flex;gap:6px;align-items:flex-end}
+.cands img{width:84px}
+.game p{margin:6px 0 14px}
+
+.days{display:grid;grid-template-columns:repeat(5,1fr);border:2px solid var(--ink);border-radius:12px;overflow:hidden;background:var(--card)}
+.day{padding:14px 12px;border-right:1.5px solid var(--ink)}
+.day:last-child{border-right:0}
+.day .d{font-family:var(--en);font-weight:600;color:var(--stamp);font-size:15px}
+.day .t{font-weight:700;margin:2px 0}
+.day .w{font-size:14px;color:var(--soft);line-height:1.6}
+
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tip{display:flex;gap:12px;align-items:flex-start}
+.tip img{width:64px;flex:none}
+.tip b{display:block;margin-bottom:2px}
+.tip span{font-size:14px;color:var(--soft)}
+
+footer{margin:56px 0 0;padding:28px 0 40px;border-top:1.5px dashed var(--milk);text-align:center;color:var(--soft);font-size:14px}
+footer .ig{display:inline-block;margin-top:14px;text-decoration:none;color:var(--ink);font-weight:700;line-height:1.5}
+footer .ig span{font-family:var(--en);font-weight:500;color:var(--stamp)}
+footer .gift{font-family:var(--display);font-size:20px;color:var(--ink)}
+
+@media (max-width:760px){
+  .video,.game{grid-template-columns:1fr}
+  .sheets,.tips{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr}
+  .day{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .day:last-child{border-bottom:0}
+  .sec-sub{margin-left:0}
+  .hero img.bg{aspect-ratio:4/5;object-position:60% bottom}
+  .cands{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img class="bg" src="img/hero.jpg" alt="投票所裡大家排隊、工作人員發選票的插畫">
+  <div class="title">
+    <h1>投票日懶人包<span class="en">Let's Vote!</span></h1>
+    <p class="lead">跟孩子聊「選舉是什麼」的科普包：一支影片、三份學習單、一個互動小遊戲，印出來就能用。</p>
+    <a class="by" href="https://www.instagram.com/cathy2328/" target="_blank" rel="noopener">by 紅豆🫘 @cathy2328</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="facts">
+    <div class="fact"><b>4–8</b>歲・幼兒園到國小低年級</div>
+    <div class="fact"><b>5</b>天・每天約 15 分鐘</div>
+    <div class="fact"><b>9</b>張・A4 單面列印</div>
+    <div class="fact"><b>中＋英</b>兩種版本</div>
+  </div>
+
+  <section id="video">
+    <div class="sec-head"><div class="no">1</div><h2>先看影片：我們去投票！</h2></div>
+    <p class="sec-sub">中文旁白，約 4 分鐘。用 YouTube 開，也可以投放到電視一起看。</p>
+    <div class="video">
+      <a class="thumb" href="https://youtu.be/HVVlNpZKs40" target="_blank" rel="noopener">
+        <img src="img/video-cover.jpg" alt="影片封面：我們去投票！">
+        <div class="play"><span></span></div>
+      </a>
+      <div>
+        <p style="margin-top:0">影片裡會看到：</p>
+        <ul>
+          <li>選舉就像選班長，只是大家一起投票</li>
+          <li>真的選票長什麼樣子、圈選欄在哪裡</li>
+          <li>用「卜」字章蓋下去、摺好、投進票箱</li>
+          <li>開票時怎麼用「正」字算票</li>
+        </ul>
+        <p class="btns" style="margin-top:14px"><a class="btn" href="https://youtu.be/HVVlNpZKs40" target="_blank" rel="noopener">▶ 到 YouTube 看</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sheets">
+    <div class="sec-head"><div class="no">2</div><h2>學習單下載</h2></div>
+    <p class="sec-sub">PDF 檔，A4 單面列印。中文版講台灣投票的細節；英文版適合想順便學英文的家庭。</p>
+    <div class="sheets">
+      <article class="sheet">
+        <div class="pv"><img src="img/th-zh.jpg" alt="中文版第一頁預覽"></div>
+        <h3>我們去投票（中文版）</h3>
+        <div class="meta">3 張・小學二年級看得懂</div>
+        <ul>
+          <li>選舉是什麼、11/28 要選哪些人</li>
+          <li>跟著爸爸媽媽去投票的步驟</li>
+          <li>開票畫「正」字練習</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" href="files/vote-zh.pdf" download="我們去投票_中文版.pdf">⬇ 下載</a>
+          <a class="btn ghost" href="files/vote-zh.pdf" target="_blank" rel="noopener">開啟</a>
+        </div>
+      </article>
+      <article class="sheet">
+        <div class="pv"><img src="img/th-pack.jpg" alt="英文列印包第一頁預覽"></div>
+        <h3>Let's Vote! 英文列印包</h3>
+        <div class="meta">5 張・附中文家長說明</div>
+        <ul>
+          <li>爸媽導覽＋5 天安排</li>
+          <li>家長講解稿、6 張生詞卡</li>
+          <li>小的塗色連連看、大的填空說一說</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" href="files/vote-pack.pdf" download="投票日_Lets_Vote_列印包.pdf">⬇ 下載</a>
+          <a class="btn ghost" href="files/vote-pack.pdf" target="_blank" rel="noopener">開啟</a>
+        </div>
+      </article>
+      <article class="sheet">
+        <div class="pv"><img src="img/th-poster.jpg" alt="彩圖海報預覽"></div>
+        <h3>彩圖海報</h3>
+        <div class="meta">1 張・A4 橫式・全英文</div>
+        <ul>
+          <li>投票四步驟一張看完</li>
+          <li>貼在牆上，每天指著說一說</li>
+        </ul>
+        <div class="btns">
+          <a class="btn" href="files/vote-poster.pdf" download="投票日_Lets_Vote_彩圖海報.pdf">⬇ 下載</a>
+          <a class="btn ghost" href="files/vote-poster.pdf" target="_blank" rel="noopener">開啟</a>
+        </div>
+      </article>
+    </div>
+    <p class="note">用 iPhone 的話，按「開啟」後點分享 → 「儲存到檔案」或直接列印。</p>
+  </section>
+
+  <section id="game">
+    <div class="sec-head"><div class="no">3</div><h2>加碼：投票日大冒險</h2></div>
+    <div class="game">
+      <div>
+        <p>在動物村選村長！孩子自己領選票、蓋章、投票、開票，每句英文點一下就會念。可以切換中文和英文，手機、平板、電腦都能玩。</p>
+        <a class="btn" href="game/">開始玩 →</a>
+      </div>
+      <div class="cands" aria-hidden="true">
+        <img src="img/panda.png" alt="">
+        <img src="img/bunny.png" alt="">
+        <img src="img/cat.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <section id="plan">
+    <div class="sec-head"><div class="no">4</div><h2>5 天怎麼用</h2></div>
+    <p class="sec-sub">每天約 15 分鐘就好，忙的時候兩天併一天也沒關係。</p>
+    <div class="days">
+      <div class="day"><div class="d">Day 1</div><div class="t">先玩再學</div><div class="w">照講解稿做身體動作、剪生詞卡一起念，再看影片</div></div>
+      <div class="day"><div class="d">Day 2</div><div class="t">貼海報聊一聊</div><div class="w">海報貼牆上，四個問題一題一題聊</div></div>
+      <div class="day"><div class="d">Day 3</div><div class="t">玩遊戲</div><div class="w">投票日大冒險，玩完做小的練習紙</div></div>
+      <div class="day"><div class="d">Day 4</div><div class="t">全家投票</div><div class="w">再玩一次開票關，全家投票選晚餐，孩子當開票員</div></div>
+      <div class="day"><div class="d">Day 5</div><div class="t">說一遍</div><div class="w">大的練習紙填一填，把整個主題說一遍</div></div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="sec-head"><div class="no">5</div><h2>跟孩子聊的三個重點</h2></div>
+    <div class="tips">
+      <div class="tip"><img src="img/ballot.png" alt=""><div><b>每個人都有一票</b><span>大人一人一票，大家一樣重要。</span></div></div>
+      <div class="tip"><img src="img/stamp.png" alt=""><div><b>投票是秘密</b><span>蓋好就摺起來，不給別人看，也不問別人投誰。</span></div></div>
+      <div class="tip"><img src="img/box.png" alt=""><div><b>票最多的人當選</b><span>開票時一張一張念出來，畫「正」字，大家都看得到。</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="gift">祝你和孩子玩得開心 🌱</div>
+    <div>歡迎分享給身邊的爸爸媽媽</div>
+    <a class="ig" href="https://www.instagram.com/cathy2328/" target="_blank" rel="noopener">紅豆🫘 | 懶媽也能很強大<br><span>IG @cathy2328</span></a>
+  </footer>
+</main>
+</body>
+</html>
