@@ -1,103 +1,103 @@
 {
- "week": "11/21（六）– 11/22（日）",
- "sat": "2026-11-21",
- "sun": "2026-11-22",
- "updated": "2026/11/16",
- "note": "南部這週末，親子劇和市集很多！\n🌙 傍晚：屏東聖誕燈＋泡泡秀\n　　　　安平朗萌綺盟燈光秀\n☀️ 白天：高美館小世界市集\n　　　　虎頭埤水與綠玩埤派對",
+ "week": "11/28（六）– 11/29（日）",
+ "sat": "2026-11-28",
+ "sun": "2026-11-29",
+ "updated": "2026/11/23",
+ "note": "南部這週末，聖誕市集開跑！\n🌙 傍晚：衛武營聖誕月首週\n　　　　屏東公園泡泡秀\n☀️ 白天：河樂廣場童書曬書\n　　　　屏菸歌仔布袋戲",
  "picks": [
-  "pt-xmas",
-  "tn-sumikko",
-  "kh-kmfa"
+  "kh-wwy",
+  "tn-books",
+  "pt-opera"
  ],
  "events": [
   {
-   "id": "kh-kmfa",
+   "id": "kh-wwy",
    "city": "高雄",
-   "emoji": "🎨",
-   "title": "高美館小世界市集",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "14:00–19:00",
-   "place": "高美館館前廣場及林蔭區（鼓山區美術館路80號）",
-   "map": "高雄市立美術館",
-   "cost": "免費",
+   "emoji": "🎄",
+   "title": "衛武營聖誕月",
+   "hot": "第一週",
+   "date": "11/28（六）– 11/29（日）",
+   "time": "15:00–20:00",
+   "place": "衛武營北廣場（鳳山區三多一路1號）",
+   "map": "衛武營國家藝術文化中心",
+   "cost": "市集區免費",
    "free": true,
-   "night": false,
+   "night": true,
    "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
    "kids": "全年齡，草地可以跑",
    "points": [
-    "職人手作、原創設計、特色餐飲",
-    "旁邊就是內惟埤和兒童美術館"
+    "連續五週的聖誕市集",
+    "這週是第一週搶先場",
+    "每天約 80–90 攤"
    ],
-   "tip": "帶野餐墊！\n逛完在草地吃點心最舒服",
-   "src": "https://kcginfo.kcg.gov.tw/Upload/epublication/7-8-01.pdf",
-   "srcName": "高雄市府 11–12月活動表",
-   "days": [
-    "sat",
-    "sun"
-   ]
+   "tip": "捷運衛武營站出站就到\n可以順便逛都會公園",
+   "src": "https://www.notathome.life/xmas",
+   "srcName": "出外人官網"
   },
   {
-   "id": "kh-sing",
+   "id": "kh-xmas",
    "city": "高雄",
-   "emoji": "🎤",
-   "title": "唱歌旅行去親子演唱會",
-   "hot": "只有這週末",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "11/21 10:30、15:00\n11/22 10:30",
-   "place": "衛武營歌劇院（鳳山區三多一路1號）",
-   "map": "衛武營國家藝術文化中心",
-   "cost": "600–2,200 元（依座位）",
-   "free": false,
-   "kids": "親子演唱會，先看官網",
-   "points": [
-    "十週年親子演唱會",
-    "全家一起唱歌看表演",
-    "要先購票"
-   ],
-   "tip": "票價分 7 個級距\n到兩廳院售票系統買",
-   "src": "https://www.npac-weiwuying.org/programs/69fae7b52404090007fc3925?lang=zh",
-   "srcName": "衛武營官網",
+   "emoji": "🎄",
+   "title": "高雄聖誕生活節",
+   "date": "11/27（五）– 11/29（日）市集",
+   "time": "點燈 17:30–24:00\n主燈每半小時一場雪花秀",
+   "place": "中央公園（前金區中山一路11號）",
+   "map": "高雄中央公園",
+   "cost": "免費",
+   "free": true,
+   "night": true,
    "signup": false,
    "days": [
     "sat",
     "sun"
    ],
-   "night": false
+   "kids": "全年齡，推嬰兒車也OK",
+   "points": [
+    "26公尺應援手燈聖誕樹",
+    "主燈秀會噴泡泡和雪花",
+    "週五到週日有耶誕小鎮市集"
+   ],
+   "tip": "捷運中央公園站1號出口\n22點後燈光秀沒有音樂",
+   "src": "https://www.nownews.com/news/6892009",
+   "srcName": "NOWnews"
   },
   {
-   "id": "kh-meinong",
+   "id": "kh-kmc",
    "city": "高雄",
-   "emoji": "🌾",
-   "title": "美濃白玉蘿蔔季",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "09:00–17:00",
-   "place": "美濃客家文物館前廣場（美濃區民族路49-3號）",
-   "map": "美濃客家文物館",
-   "cost": "入場費請看官網",
-   "free": false,
-   "kids": "全年齡，拔蘿蔔體驗",
-   "points": [
-    "拔蘿蔔體驗",
-    "闖關解謎可領抵用券",
-    "農特產展售和生活市集",
-    "有音樂表演"
-   ],
-   "tip": "穿好走的鞋\n帶帽子和水",
-   "src": "https://news.tvbs.com.tw/life/4039476",
-   "srcName": "TVBS",
+   "emoji": "⛵",
+   "title": "高流港灣聖誕市集",
+   "date": "11/28（六）– 11/29（日）",
+   "time": "市集 15:00–21:00\n聖誕樹燈光秀 17:30–22:30",
+   "place": "高雄流行音樂中心 珊瑚礁群（鹽埕區真愛路1號）",
+   "map": "高雄流行音樂中心",
+   "cost": "免費",
+   "free": true,
+   "night": true,
    "signup": false,
    "days": [
     "sat",
     "sun"
    ],
-   "night": false
+   "kids": "全年齡",
+   "points": [
+    "17公尺粉紅聖誕樹",
+    "每30分鐘一場燈光秀",
+    "海邊吹風看港灣夜景"
+   ],
+   "tip": "搭輕軌到光榮碼頭站\n傍晚來可以看夕陽",
+   "src": "https://supertaste.tvbs.com.tw/travel/362377",
+   "srcName": "食尚玩家"
   },
   {
    "id": "kh-shoushan",
    "city": "高雄",
    "emoji": "🐾",
    "title": "壽山動物園趴兔市集",
-   "date": "11/21（六）– 11/22（日）（市集到 11/29）",
+   "date": "11/28（六）– 11/29（日）",
    "time": "09:00–17:00",
    "place": "壽山動物園親水廣場（鼓山區萬壽路350號）",
    "map": "壽山動物園",
@@ -109,7 +109,7 @@
     "可以順便逛動物園",
     "有寵物用品攤位"
    ],
-   "tip": "市集一直到 11/29\n入園規定先確認",
+   "tip": "11/29 是最後一天\n入園規定先確認",
    "src": "https://wekengo.tw/event/eqUA6l/sen-ri-dong-wu-pai-dui-nov-shou-shan-dong-wu-yuan-pa-tu-shi",
    "srcName": "WeKenGo",
    "signup": false,
@@ -117,169 +117,8 @@
     "sat",
     "sun"
    ],
-   "night": false
-  },
-  {
-   "id": "tn-hutoupi",
-   "city": "台南",
-   "emoji": "🎈",
-   "title": "虎頭埤水與綠玩埤派對",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "全天活動\n免費接駁車 09:00–19:00",
-   "place": "虎頭埤風景區水上舞台（新化區）",
-   "map": "虎頭埤風景區",
-   "cost": "接駁車免費，其他請看公告",
-   "free": false,
-   "night": true,
-   "kids": "全年齡，有親子互動",
-   "points": [
-    "互動馬戲、魔術、氣球秀",
-    "約 30 攤特色市集",
-    "週日有《虎頭埤故事劇場》",
-    "晚上有音樂演出"
-   ],
-   "tip": "台南轉運站有免費接駁\n每 30 分鐘一班",
-   "src": "https://www.tainanoutlook.com/activities/1210365733",
-   "srcName": "台南意向",
-   "signup": false,
-   "days": [
-    "sat",
-    "sun"
-   ]
-  },
-  {
-   "id": "tn-bean",
-   "city": "台南",
-   "emoji": "🎭",
-   "title": "親子劇《蝴蝶大變！》",
-   "hot": "只有這週末",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "11/21 10:30、15:30\n11/22 10:30",
-   "place": "台江文化中心台江劇場（台南市安南區）",
-   "map": "台江文化中心",
-   "cost": "700 元",
-   "free": false,
-   "kids": "親子劇，年齡未標示",
-   "points": [
-    "親子舞台劇",
-    "主題是「變身的變」"
-   ],
-   "tip": "座位有限\n建議先買票",
-   "src": "https://www.tainanoutlook.com/activities/beantheatre",
-   "srcName": "台南意向",
-   "signup": false,
-   "days": [
-    "sat",
-    "sun"
-   ],
-   "night": false
-  },
-  {
-   "id": "tn-jimmy",
-   "city": "台南",
-   "emoji": "🎭",
-   "title": "幾米男孩的100次勇敢",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "11/21 14:30、19:30\n11/22 14:30",
-   "place": "臺南文化中心演藝廳（東區中華東路三段332號）",
-   "map": "臺南文化中心",
-   "cost": "800–2,500 元",
-   "free": false,
-   "kids": "普遍級，一人一票",
-   "points": [
-    "臺南文化中心 42 週年館慶",
-    "全長約 80 分鐘",
-    "中間不休息"
-   ],
-   "tip": "有煙霧和強光\n小小孩請先評估",
-   "src": "https://www.opentix.life/event/2053719432722923520",
-   "srcName": "OPENTIX",
-   "signup": false,
-   "days": [
-    "sat",
-    "sun"
-   ],
-   "night": false
-  },
-  {
-   "id": "tn-nanke",
-   "city": "台南",
-   "emoji": "📚",
-   "title": "南科書展市集",
-   "date": "11/21（六）– 11/22（日）",
-   "time": "11/21 11:00–21:00\n11/22 11:00–18:00",
-   "place": "南部科學園區管理局（新市區南三路22號）",
-   "map": "南部科學園區管理局",
-   "cost": "免報名，現場入場",
-   "free": true,
-   "night": true,
-   "kids": "全年齡，有繪本說書",
-   "points": [
-    "繪本說書每場 20 分鐘",
-    "週日 14:00 動物主題秀",
-    "還有馬戲表演"
-   ],
-   "tip": "說書和電影要現場排隊\n時間可能調整",
-   "src": "https://www.tainanoutlook.com/activities/1770587454",
-   "srcName": "台南意向",
-   "signup": false,
-   "days": [
-    "sat",
-    "sun"
-   ]
-  },
-  {
-   "id": "tn-wushulin",
-   "city": "台南",
-   "emoji": "🚂",
-   "title": "小小糖鐵英雄體驗營",
-   "hot": "要先報名",
-   "date": "11/21（六）",
-   "time": "09:10–15:00",
-   "place": "烏樹林休閒園區（後壁區）",
-   "map": "烏樹林休閒園區",
-   "cost": "小朋友 1,000、大人 500",
-   "free": false,
-   "signup": true,
-   "days": [
-    "sat"
-   ],
-   "kids": "親子家庭，限 12 位小朋友",
-   "points": [
-    "糖鐵主題的親子體驗",
-    "含午餐、保險、講師費",
-    "10 位小朋友成團"
-   ],
-   "tip": "名額有限，要先報名\n要自行前往，沒有接駁",
-   "src": "https://www.tainanoutlook.com/activities/1985121532",
-   "srcName": "台南意向",
-   "night": false
-  },
-  {
-   "id": "tn-astro",
-   "city": "台南",
-   "emoji": "🔭",
-   "title": "天文觀測路邊攤",
-   "date": "11/21（六）",
-   "time": "19:30–21:30",
-   "place": "鹽水國小群英台（鹽水區朝琴路137號）",
-   "map": "鹽水國小",
-   "cost": "免費，免預約",
-   "free": true,
-   "night": true,
-   "days": [
-    "sat"
-   ],
-   "kids": "全年齡",
-   "points": [
-    "多台望遠鏡看月亮",
-    "《月亮大小事》講座",
-    "天氣不好會取消"
-   ],
-   "tip": "先看台南市天文協會粉專\n校內不能停車",
-   "src": "https://www.tainanoutlook.com/activities/298890041",
-   "srcName": "台南意向",
-   "signup": false
+   "night": false,
+   "hot": "最後一週"
   },
   {
    "id": "tn-sumikko",
@@ -311,6 +150,88 @@
    ]
   },
   {
+   "id": "tn-books",
+   "city": "台南",
+   "emoji": "📚",
+   "title": "覓漫冬季曬書節",
+   "hot": "最後週末",
+   "date": "11/27（五）– 11/29（日）",
+   "time": "13:30–21:30",
+   "place": "河樂廣場 B1 K01 展區（中西區中正路343號）",
+   "map": "河樂廣場",
+   "cost": "現場選購，價格依現場",
+   "free": false,
+   "night": true,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "全年齡，童書挖寶",
+   "points": [
+    "童書和教具指定區",
+    "從河樂廣場 2 號口下樓",
+    "逛完可以在河樂廣場散步"
+   ],
+   "tip": "帶環保袋裝書\n出發前請先確認",
+   "src": "https://www.tainanoutlook.com/activities/305906905",
+   "srcName": "台南意向"
+  },
+  {
+   "id": "tn-chimei",
+   "city": "台南",
+   "emoji": "🎄",
+   "title": "奇美幸福聖誕樹",
+   "date": "即日起 – 2027/1/12（每天）",
+   "time": "點燈 17:30–22:00",
+   "place": "奇美博物館主建築前（仁德區文華路二段66號）",
+   "map": "奇美博物館",
+   "cost": "戶外看樹免費",
+   "free": true,
+   "night": true,
+   "signup": false,
+   "days": [
+    "sat",
+    "sun"
+   ],
+   "kids": "全年齡，草地可以跑",
+   "points": [
+    "13公尺藍金色聖誕樹",
+    "古埃及主題的裝飾",
+    "白天和晚上風格不同"
+   ],
+   "tip": "傍晚 5 點半等點燈\n聖誕週末 12/12 起才要買票",
+   "src": "https://supertaste.tvbs.com.tw/travel/362418",
+   "srcName": "食尚玩家"
+  },
+  {
+   "id": "tn-liukong",
+   "city": "台南",
+   "emoji": "📚",
+   "title": "台江六孔親子故事體驗",
+   "hot": "只有這天",
+   "date": "11/29（日）",
+   "time": "09:30–11:30、13:30–15:30",
+   "place": "台江國家公園六孔遊客中心（七股區三股里海埔18號）",
+   "map": "台江國家公園六孔遊客中心",
+   "cost": "每組家庭 200 元",
+   "free": false,
+   "night": false,
+   "signup": true,
+   "days": [
+    "sun"
+   ],
+   "kids": "國小三年級以上",
+   "points": [
+    "繪本說故事認識台江",
+    "台江口傳文化特展導覽",
+    "每場只收 10 組家庭"
+   ],
+   "tip": "11/25 17:00 截止報名\n弟弟妹妹可以同行",
+   "src": "https://www.tainanoutlook.com/activities/1001993544",
+   "srcName": "台南意向"
+  },
+  {
    "id": "pt-xmas",
    "city": "屏東",
    "emoji": "🎄",
@@ -339,58 +260,31 @@
    ]
   },
   {
-   "id": "pt-bunun",
+   "id": "pt-opera",
    "city": "屏東",
-   "emoji": "🎶",
-   "title": "布農族～相信 LATUZA",
-   "hot": "11/22 結束",
-   "date": "11/15 – 11/22",
-   "time": "10:30、14:30\n每場約 40–50 分鐘",
-   "place": "臺灣原住民族文化園區歌舞館（瑪家鄉北葉村風景104號）",
-   "map": "臺灣原住民族文化園區",
-   "cost": "票價請看官網",
-   "free": false,
-   "kids": "年齡未標示，先看官網",
-   "points": [
-    "布農族歌舞演出",
-    "每場約 40–50 分鐘",
-    "中間不休息"
-   ],
-   "tip": "票價和年齡限制\n出發前請先確認",
-   "src": "https://wekengo.tw/event/8ZAyR0/bu-nong-zu-xiang-xin-latuza",
-   "srcName": "WeKenGo",
+   "emoji": "🎭",
+   "title": "涇水河奇談",
+   "hot": "只有這天",
+   "date": "11/29（日）",
+   "time": "14:00–15:30",
+   "place": "屏菸1936文化基地（屏東市菸廠路1號）",
+   "map": "屏菸1936文化基地",
+   "cost": "免費",
+   "free": true,
+   "night": false,
    "signup": false,
    "days": [
-    "sat",
     "sun"
    ],
-   "night": false
-  },
-  {
-   "id": "pt-seediq",
-   "city": "屏東",
-   "emoji": "🎤",
-   "title": "《合歡山下的賽德克族》",
-   "hot": "只有這天",
-   "date": "11/21（六）",
-   "time": "10:30、14:30",
-   "place": "臺灣原住民族文化園區歌舞館（瑪家鄉北葉村風景104號）",
-   "map": "臺灣原住民族文化園區",
-   "cost": "需先索票",
-   "free": false,
-   "signup": true,
-   "days": [
-    "sat"
-   ],
-   "kids": "全年齡，歌舞表演",
+   "kids": "全年齡，親子同行",
    "points": [
-    "賽德克族青年會演出",
-    "原住民族傳統歌舞"
+    "歌仔戲加布袋戲同台",
+    "明興閣掌中劇團演出",
+    "免報名，自由入場"
    ],
-   "tip": "要先索票\n索票方式請看園區公告",
-   "src": "https://www.linego.me/news/6796",
-   "srcName": "LINE 屏東週報",
-   "night": false
+   "tip": "看完戲逛屏菸展覽\n傍晚再去屏東公園看燈",
+   "src": "https://wekengo.tw/event/kHe7KT/yi-dong-nan-guo-xin-chuan-ping-dong-jing-shui-he-qi-tan",
+   "srcName": "WeKenGo"
   }
  ],
  "always": [
@@ -461,7 +355,7 @@
    "emoji": "🎈",
    "title": "新北城市展・全民玩馬戲",
    "date": "即日起 – 12/27（週一休）",
-   "time": "11/21、22 14:00 免費電影（需索票）",
+   "time": "週二至週日開放（週一休）",
    "place": "新北市政府三重安芯中心（三重區安芯路1號）",
    "map": "新北市政府三重安芯中心",
    "cost": "免費",
@@ -476,26 +370,24 @@
    "points": [
     "馬戲主題互動展",
     "錯覺拍照裝置",
-    "週六放《超級瑪利歐》",
-    "週日放《樂高玩電影》"
+    "馬戲快閃場次每週更新"
    ],
-   "tip": "電影要先索票\nAccupass 或現場領票",
+   "tip": "場次看官網\n捷運先嗇宮站走過去",
    "src": "https://www.nownews.com/news/6891637",
    "srcName": "NOWnews"
   },
   {
-   "id": "n-flower",
+   "id": "n-parklane",
    "city": "台中",
-   "emoji": "🌸",
-   "title": "新社花海・花毯節",
-   "hot": "最後週末",
-   "date": "10/31 – 11/22",
-   "time": "08:30–16:30",
-   "place": "新社種苗改良繁殖場第二苗圃（新社區協興街30號）",
-   "map": "新社種苗改良繁殖場",
-   "cost": "票價請看官網",
-   "free": false,
-   "night": false,
+   "emoji": "🎄",
+   "title": "勤美草悟聖誕村",
+   "date": "11/13 – 2027/1/4",
+   "time": "聲光秀 17:00–21:30\n每10分鐘一場",
+   "place": "草悟道商圈（西區向上北路一帶）",
+   "map": "勤美誠品綠園道",
+   "cost": "免費",
+   "free": true,
+   "night": true,
    "signup": false,
    "days": [
     "sat",
@@ -503,13 +395,13 @@
    ],
    "kids": "全年齡",
    "points": [
-    "台中國際花毯節",
-    "大面積花海好拍照",
-    "11/22 就結束了"
+    "8公尺聖誕主樹「流光之森」",
+    "250米光之道，40萬顆燈泡",
+    "室內有雪人夢工廠"
    ],
-   "tip": "票價請看官網\n早點出發避開人潮",
-   "src": "https://www.flowercarpet.tw/",
-   "srcName": "花毯節官網"
+   "tip": "傍晚到看第一場燈\n草悟道一路散步很好拍",
+   "src": "https://smiletaiwan.cw.com.tw/article/9592",
+   "srcName": "微笑台灣"
   }
  ],
  "exhibits": [
@@ -954,35 +846,35 @@
  "more": [
   {
    "city": "高雄",
-   "title": "鋼雕藝術節",
-   "date": "即日起 – 11/22",
-   "place": "駁二藝術特區",
-   "url": "https://wekengo.tw/event/kg0UKT/2026-gao-xiong-guo-ji-gang-diao-yi-shu-jie-superstage",
-   "note": "最後週末"
+   "title": "趣。生活迷你高爾夫市集",
+   "date": "11/28（六）– 11/29（日）",
+   "place": "駁二大義紅磚廊道",
+   "url": "https://khh.tainanoutlook.com/events/61bbfc099064",
+   "note": "有劍玉表演"
   },
   {
    "city": "高雄",
-   "title": "東京威力科創機器人大賽",
-   "date": "11/21（六）",
-   "place": "駁二 P2、P3",
-   "url": "https://khh.tainanoutlook.com/events/4b42a5bc8698",
-   "note": "只有週六"
-  },
-  {
-   "city": "高雄",
-   "title": "橋糖一巷微市集",
-   "date": "11/21（六）– 11/22（日）",
-   "place": "橋頭糖廠",
-   "url": "https://wekengo.tw/event/ihyZDf/qiao-tang-yi-xiang-wei-shi-ji",
-   "note": "攤位請確認"
+   "title": "KIDE 國際發明暨設計展",
+   "date": "11/26 – 11/28",
+   "place": "高雄展覽館北館",
+   "url": "https://khh.tainanoutlook.com/events/b622bbc90079",
+   "note": "到週六"
   },
   {
    "city": "高雄",
    "title": "SEA YOU 海洋的星願與守護",
    "date": "即日起 – 11/29",
-   "place": "駁二 B6 倉庫",
-   "url": "https://wekengo.tw/event/UeJqLW/seayou-hai-yang-de-xing-yuan-yu-shou-hu",
-   "note": "免費"
+   "place": "駁二蓬萊B6倉庫",
+   "url": "https://khh.tainanoutlook.com/events/075fbb91fd00",
+   "note": "最後週末"
+  },
+  {
+   "city": "高雄",
+   "title": "大樹苦瓜季",
+   "date": "11/29（日）",
+   "place": "大樹區農會姑山倉庫",
+   "url": "https://kcginfo.kcg.gov.tw/Upload/epublication/7-8-01.pdf",
+   "note": "有親子遊戲"
   },
   {
    "city": "高雄",
@@ -993,107 +885,87 @@
   },
   {
    "city": "高雄",
-   "title": "草地野餐音樂會",
-   "date": "11/21（六）",
-   "place": "高雄社教館",
-   "url": "https://kcginfo.kcg.gov.tw/Upload/epublication/7-8-01.pdf",
-   "note": "下午 3 點"
+   "title": "夢時代紫色聖誕樹",
+   "date": "即日起",
+   "place": "夢時代 1F",
+   "url": "https://cpok.tw/74814",
+   "note": "有飄雪秀"
   },
   {
-   "city": "台南",
-   "title": "臺文館故事聯合國",
-   "date": "11/21（六）",
-   "place": "國立臺灣文學館",
-   "url": "https://www.tainanoutlook.com/activities/755501020",
-   "note": "需報名"
-  },
-  {
-   "city": "台南",
-   "title": "南科考古館考古體驗",
-   "date": "11/21（六）",
-   "place": "南科考古館",
-   "url": "https://www.tainanoutlook.com/activities/366374083",
-   "note": "需報名"
-  },
-  {
-   "city": "台南",
-   "title": "南紡星空音樂節",
-   "date": "11/21（六）– 11/22（日）",
-   "place": "南紡購物中心",
-   "url": "https://www.tainanoutlook.com/activities/1059440691",
-   "note": "免費"
-  },
-  {
-   "city": "台南",
-   "title": "時巡之市和服市集",
-   "date": "11/21（六）– 11/22（日）",
-   "place": "西竹圍之丘",
-   "url": "https://www.tainanoutlook.com/activities/flavor-bazaar",
-   "note": "中午 12 點起"
+   "city": "高雄",
+   "title": "高雄國際冬季旅展",
+   "date": "11/27 – 11/30",
+   "place": "高雄展覽館南館",
+   "url": "https://khh.tainanoutlook.com/events/936a99849b34"
   },
   {
    "city": "台南",
    "title": "神農街十一號星球市集",
-   "date": "11/21（六）– 11/22（日）",
+   "date": "11/27 – 11/29",
    "place": "神農街",
-   "url": "https://www.tainanoutlook.com/activities/972126582",
-   "note": "傍晚開始"
+   "url": "https://www.tainanoutlook.com/activities/972126582"
   },
   {
    "city": "台南",
-   "title": "歷史的時空列車",
-   "date": "即日起 – 11/22",
-   "place": "台南文創園區",
-   "url": "https://decing.tw/tainan-2026110708/",
-   "note": "最後一天"
-  },
-  {
-   "city": "台南",
-   "title": "關子嶺溫泉美食節",
-   "date": "即日起 – 11/22",
-   "place": "關子嶺",
-   "url": "https://www.accupass.com/event/2609280633041660533625",
-   "note": "最後一天"
+   "title": "台南藝術雙年展",
+   "date": "即日起 – 2027/3/1",
+   "place": "臺南市美術館",
+   "url": "https://www.tainanoutlook.com/activities/579324684",
+   "note": "需購票"
   },
   {
    "city": "屏東",
-   "title": "屏東光旅「HELLO萬！」",
-   "date": "即日起 – 2027/1/3",
-   "place": "萬丹森林公園",
-   "url": "https://www.linego.me/news/6796",
-   "note": "每晚 17:30"
+   "title": "萬金聖誕季",
+   "date": "即日起 – 12/27",
+   "place": "萬金聖母聖殿",
+   "url": "https://cpok.tw/74958",
+   "note": "遊行在12/6"
   },
   {
    "city": "屏東",
    "title": "海生館萬聖節變裝入館",
    "date": "即日起 – 11/30",
-   "place": "海生館",
+   "place": "國立海洋生物博物館",
    "url": "https://wekengo.tw/event/V0kUXm/wan-sheng-jie-bian-zhuang-ru-guan",
-   "note": "變裝換貼紙"
+   "note": "最後週末"
+  },
+  {
+   "city": "屏東",
+   "title": "時光禮物月台特展",
+   "date": "即日起 – 2027/1/10",
+   "place": "屏東演武場",
+   "url": "https://wekengo.tw/event/SNRuIs/ping-dong-yan-wu-chang-ping-cang-xin-shi-guang-li-wu-yue-tai",
+   "note": "免費"
+  },
+  {
+   "city": "屏東",
+   "title": "影子說戲紙影特展",
+   "date": "即日起 – 2027/2/27",
+   "place": "屏東戲曲故事館",
+   "url": "https://wekengo.tw/event/xcb3oC/ping-dong-xi-qu-gu-shi-guan-ying-zi-shuo-xi-chen-chu-shi-zhi",
+   "note": "免費"
   },
   {
    "city": "屏東",
    "title": "2026六堆秋收祭",
    "date": "11/7 – 12/5",
-   "place": "六堆客家文化園區",
-   "url": "https://wekengo.tw/event/QVD6A4/2026-liu-dui-qiu-shou-ji-xi-lie-huo-dong",
-   "note": "場次請確認"
+   "place": "內埔鄉",
+   "url": "https://wekengo.tw/event/QVD6A4/2026-liu-dui-qiu-shou-ji-xi-lie-huo-dong"
   },
   {
    "city": "屏東",
    "title": "屏東鐵道文化觀光祭",
    "date": "即日起 – 12/5",
-   "place": "枋寮、麟洛車站",
-   "url": "https://wekengo.tw/event/u9IC2Y/2026-ping-dong-tie-dao-wen-hua-guan-guang-ji-1024125-gen-zhu",
-   "note": "場次請確認"
+   "place": "枋寮火車站",
+   "url": "https://wekengo.tw/event/u9IC2Y/2026-ping-dong-tie-dao-wen-hua-guan-guang-ji-1024125-gen-zhu"
   },
   {
    "city": "屏東",
    "title": "南國風土×鐵道走讀",
-   "date": "10/31 – 11/29（週六）",
-   "place": "枋寮等車站",
+   "date": "11/28（六）",
+   "place": "枋寮等火車站",
    "url": "https://wekengo.tw/event/V1J1Xm/nan-guo-feng-tu-tie-dao-zou-du-ping-dong-tie-dao-wen-hua-gua",
-   "note": "場次請確認"
+   "note": "需報名"
   }
  ]
 }
